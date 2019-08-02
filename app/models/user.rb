@@ -1,4 +1,4 @@
 class User < ApplicationRecord
-  has_many :recollections
-  has_many :events, through: :recollections
+  has_many :memories
+  has_many :events, through: :memories
 end
