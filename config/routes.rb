@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   get 'users/index'
   get 'users/new'
@@ -29,8 +31,8 @@ Rails.application.routes.draw do
 
   resources :events, shallow: true do
     resources :users, only: [:index]
-    resources :memories, only: [:index, :new, :create]
+    resources :memories, only: %i[index new create]
   end
 
-  resources :memories, except: [:new, :create]
+  resources :memories, except: %i[new create]
 end
