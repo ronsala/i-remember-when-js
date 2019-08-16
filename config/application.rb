@@ -8,6 +8,9 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 require 'faker'
+require 'database_cleaner'
+
+DatabaseCleaner.strategy = :truncation
 
 module RailsTestProject
   class Application < Rails::Application
