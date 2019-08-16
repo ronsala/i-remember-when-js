@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'msgpack'
 gem 'rake'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
