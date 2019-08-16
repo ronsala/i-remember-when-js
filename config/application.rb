@@ -9,6 +9,7 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 require 'faker'
 require 'database_cleaner'
+require 'pry-rails'
 
 DatabaseCleaner.strategy = :truncation
 
