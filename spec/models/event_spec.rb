@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+# todo
 RSpec.describe Event, type: :model do
   before (:each) do
 
