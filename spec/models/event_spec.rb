@@ -50,4 +50,9 @@ RSpec.describe Event, type: :model do
     expect(@event.memories.first).to eq(@memory1)
     expect(@event.memories.last).to eq(@memory2)
   end
+
+  it "has many users through memories" do
+    expect(@event.users.first).to eq(@user1)
+    expect(@event.users.last).to eq(@user2)
+  end
 end
