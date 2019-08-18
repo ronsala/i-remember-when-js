@@ -1,28 +1,57 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  
+  before (:each) do
 
-  let (:user) {
-    User.create!(
-      username: "Mark",
-      email: "mark@example.com",
-      password: "123",
-      bio: "Out of the wild in style."
+    @event = Event.create(
+      name: "The Big Event",
+      country: "United States",
+      day: 1,
+      month: 5,
+      year: 1985,
+      description: "It was that big."
     )
-  }
 
-  let (:admin) {
-    User.create!(
-      username: "Mandy",
-      email: "mandy@example.com",
-      password: "123",
-      bio: "I rule!.",
-      admin: true
+    @user1 = User.create(
+      username: "Lexi",
+      email: "lexi@example.com",
+      password: "123", 
+      bio: "In search of truth."
     )
-  }
+
+   @user2 = User.create(
+      username: "Eve",
+      email: "eve@example.com",
+      password: "123", 
+      bio: "In search of experience."
+    )
+
+    @admin1 = User.create!(
+        username: "Mandy",
+        email: "mandy@example.com",
+        password: "123",
+        bio: "I rule!.",
+        admin: true
+      )
+  
+    @memory1 = Memory.create(
+      event_id: @event.id,
+      user_id: @user1.id,
+      title: "My Earliest Memory", 
+      body: "It was a dark and stormy night. Out stepped the captain...."
+    )
+
+   @memory2 = Memory.create(
+      event_id: @event.id,
+      user_id: @user2.id,
+      title: "Life Changing", 
+      body: "Best speech ever!"
+    )
+  end
 
   it "is valid with username, email, password, bio" do
-    expect(user).to be_valid
+    expect(@user1).to be_valid
   end
 
   it "is not valid without password" do
@@ -30,14 +59,14 @@ RSpec.describe User, type: :model do
   end
 
   it "is valid with an admin boolean" do
-    expect(admin).to be_valid
+    expect(@admin1).to be_valid
   end
 
   it "defaults to admin: false" do
-    expect(user.admin).to eq(false)
+    expect(@user1.admin).to eq(false)
   end
 
-  it "has many rides" do
-    
+  it "has many memories" do
+    expect(@user1.memories.first).to eq(@memory1)
   end
 end
