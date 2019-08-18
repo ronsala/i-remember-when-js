@@ -38,4 +38,8 @@ RSpec.describe Memory, type: :model do
   it "belongs to one user" do
     expect(memory.user).to eq(user)
   end
+
+  it "belongs to one event" do
+    expect(memory.event).to eq(event)
+  end
 end
