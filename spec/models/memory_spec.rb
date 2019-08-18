@@ -34,4 +34,8 @@ RSpec.describe Memory, type: :model do
   it "is valid with event, user, title, body" do
     expect(memory).to be_valid
   end
+
+  it "belongs to one user" do
+    expect(memory.user).to eq(user)
+  end
 end
