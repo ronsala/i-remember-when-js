@@ -2,17 +2,8 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  # it "creates users" do
-  #   10.times do
-  #     user = User.new
-  #     user[:username] = Faker::Internet.username
-  #     user.save
-  #   end
-  #   expect(User.all.count).to eq(10)
-  # end
-
   let (:user) {
-    User.create(
+    User.create!(
       username: "Mark",
       email: "mark@example.com",
       password: "123",
@@ -20,8 +11,22 @@ RSpec.describe User, type: :model do
     )
   }
 
+  # let (:admin) {
+  #   User.create(
+  #     username: "Mandy",
+  #     email: "mandy@example.com",
+  #     password: "123",
+  #     bio: "I rule!.",
+  #     admin: true
+  #   )
+  # }
+
   it "is valid with username, email, password, bio" do
     expect(user).to be_valid
+  end
+
+  it "is not valid without password" do
+    expect(User.new(username: "MyName")).not_to be_valid
   end
 
   # it "creates an admin" do
