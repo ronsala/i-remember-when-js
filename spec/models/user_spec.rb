@@ -52,7 +52,7 @@ RSpec.describe User, type: :model do
     )
 
    @memory2 = Memory.create(
-      event_id: @event1.id,
+      event_id: @event2.id,
       user_id: @user1.id,
       title: "Life Changing", 
       body: "Best speech ever!"
@@ -83,5 +83,6 @@ RSpec.describe User, type: :model do
 
   it "has many events through memories" do
     expect(@user1.events.first).to eq(@event1)
+    expect(@user1.events.last).to eq(@event2)
   end
 end
