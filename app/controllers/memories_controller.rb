@@ -5,7 +5,12 @@ class MemoriesController < ApplicationController
 
   def new; end
 
-  def create; end
+  def create
+    # memory = Memory.new(memory)
+    # if memory.save
+    #   @memory = 
+    # end
+  end
 
   def show; end
 
