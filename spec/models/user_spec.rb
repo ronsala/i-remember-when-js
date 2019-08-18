@@ -29,13 +29,6 @@ RSpec.describe User, type: :model do
       bio: "In search of truth."
     )
 
-   @user2 = User.create(
-      username: "Eve",
-      email: "eve@example.com",
-      password: "123", 
-      bio: "In search of experience."
-    )
-
     @admin1 = User.create!(
         username: "Mandy",
         email: "mandy@example.com",
