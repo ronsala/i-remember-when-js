@@ -4,7 +4,16 @@ RSpec.describe User, type: :model do
   
   before (:each) do
 
-    @event = Event.create(
+    @event1 = Event.create(
+      name: "The Big Event",
+      country: "United States",
+      day: 1,
+      month: 5,
+      year: 1985,
+      description: "It was that big."
+    )
+
+    @event2 = Event.create(
       name: "The Big Event",
       country: "United States",
       day: 1,
@@ -36,15 +45,15 @@ RSpec.describe User, type: :model do
       )
   
     @memory1 = Memory.create(
-      event_id: @event.id,
+      event_id: @event1.id,
       user_id: @user1.id,
       title: "My Earliest Memory", 
       body: "It was a dark and stormy night. Out stepped the captain...."
     )
 
    @memory2 = Memory.create(
-      event_id: @event.id,
-      user_id: @user2.id,
+      event_id: @event1.id,
+      user_id: @user1.id,
       title: "Life Changing", 
       body: "Best speech ever!"
     )
@@ -68,5 +77,11 @@ RSpec.describe User, type: :model do
 
   it "has many memories" do
     expect(@user1.memories.first).to eq(@memory1)
+    expect(@user1.memories.last).to eq(@memory2)
+
+  end
+
+  it "has many events through memories" do
+    expect(@user1.events.first).to eq(@event1)
   end
 end
