@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  # before (:each) do
+  before (:each) do
 
     @event = Event.create(
         name: "The Big Event",
@@ -40,7 +40,7 @@ RSpec.describe Event, type: :model do
         title: "Life Changing", 
         body: "Best speech ever!"
       )
-  # end
+  end
 
   it "is valid with name, country, day, month, year, description" do
     expect(@event).to be_valid
