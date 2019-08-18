@@ -32,4 +32,8 @@ RSpec.describe User, type: :model do
   it "is valid with an admin boolean" do
     expect(admin).to be_valid
   end
+
+  it "defaults to admin: false" do
+    expect(user.admin).to eq(false)
+  end
 end

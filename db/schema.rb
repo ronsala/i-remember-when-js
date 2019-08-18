@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_04_072101) do
+ActiveRecord::Schema.define(version: 2019_08_18_085148) do
 
   create_table "events", force: :cascade do |t|
     t.string "name"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2019_08_04_072101) do
     t.string "email"
     t.string "password_digest"
     t.string "bio"
-    t.integer "admin"
+    t.boolean "admin", default: false
   end
 
 end
