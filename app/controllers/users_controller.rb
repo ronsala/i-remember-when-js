@@ -9,7 +9,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def create; end
+  def create
+    # binding.pry
+    @user = User.create(user_params)
+  end
 
   def show; end
 
@@ -18,4 +21,10 @@ class UsersController < ApplicationController
   def update; end
 
   def destroy; end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:username, :email, :password, :bio, :admin)
+  end
 end
