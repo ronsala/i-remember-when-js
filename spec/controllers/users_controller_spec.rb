@@ -36,7 +36,7 @@ RSpec.describe UsersController, type: :controller do
       expect(assigns(:user)).to eq(User.last)
     end
 
-    it "redirects to user_path" do
+    it "redirects to user_path if user created" do
       post :create, params: { user: {username: "Renee", email: "renee@example.com", password: "123", bio: "It all started a long time ago...."} }
       expect(response).to redirect_to user_path(1)
     end
