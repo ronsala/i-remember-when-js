@@ -42,18 +42,20 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  # describe "GET new" do
-  #   it "assigns @user" do
-  #     user = User.new
-  #     get :new
-  #     expect(assigns(:user)).to be_a_new(User)
-  #   end
+  describe "GET show" do
+    params = {id: 1}
+
+    it "assigns @user" do
+      user = User.find(params[:id])
+      get user_path(1)
+      expect(response).to eq(user_path(1))
+    end
 
   #   it "renders the new template" do
   #     get :new
   #     expect(response).to render_template("new")
   #   end
-  # end
+  end
 
   # describe "GET new" do
   #   it "assigns @user" do
