@@ -15,14 +15,16 @@ RSpec.describe Event, type: :model do
     @user1 = User.create(
         username: "Lexi",
         email: "lexi@example.com",
-        password: "123", 
+        password: "12345678",
+        password_confirmation: "12345678",
         bio: "In search of truth."
       )
 
      @user2 = User.create(
         username: "Eve",
         email: "eve@example.com",
-        password: "123", 
+        password: "12345678",
+        password_confirmation: "12345678",
         bio: "In search of experience."
       )
     

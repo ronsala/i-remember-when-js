@@ -25,7 +25,6 @@ RSpec.describe "User requests", type: :request do
     end
 
     it "renders new template if user not created" do
-      context "with "
       post '/users', params: { user: {username: "Renee", email: "renee@example.com", password: "", bio: "It all started a long time ago...."} }
       expect(response).to render_template("new")
     end

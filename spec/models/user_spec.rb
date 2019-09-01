@@ -25,14 +25,16 @@ RSpec.describe User, type: :model do
     @user1 = User.create(
       username: "Lexi",
       email: "lexi@example.com",
-      password: "123", 
+      password: "12345678",
+      password_confirmation: "12345678",
       bio: "In search of truth."
     )
 
     @admin1 = User.create!(
         username: "Mandy",
         email: "mandy@example.com",
-        password: "123",
+        password: "12345678",
+        password_confirmation: "12345678",
         bio: "I rule!.",
         admin: true
       )
@@ -58,6 +60,26 @@ RSpec.describe User, type: :model do
 
   it "is not valid without password" do
     expect(User.new(username: "MyName")).not_to be_valid
+  end
+
+  it "is not valid without correct password_confirmation" do
+    expect(User.create(
+      username: "Lexi",
+      email: "lexi@example.com",
+      password: "12345678",
+      password_confirmation: "12345677",
+      bio: "In search of truth."
+    )).not_to be_valid
+  end
+
+  it "is not valid without correct email format" do
+    expect(User.create(
+      username: "Lexi",
+      email: "lexiexample.com",
+      password: "12345678",
+      password_confirmation: "12345677",
+      bio: "In search of truth."
+    )).not_to be_valid
   end
 
   it "is valid with an admin boolean" do

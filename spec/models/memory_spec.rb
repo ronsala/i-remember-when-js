@@ -6,7 +6,8 @@ RSpec.describe Memory, type: :model do
     User.create(
       username: "Eve",
       email: "eve@example.com",
-      password: "123", 
+      password: "12345678",
+      password_confirmation: "12345678",
       bio: "In search of truth."
     )
   }
