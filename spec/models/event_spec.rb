@@ -48,6 +48,28 @@ RSpec.describe Event, type: :model do
     expect(@event).to be_valid
   end
 
+  it "validates country selected" do
+    expect(Event.create(
+      name: "The Big Event",
+      country: "Select",
+      day: 1,
+      month: 5,
+      year: 1985,
+      description: "It was that big."
+    )).not_to be_valid
+  end
+
+  it "validates year selected" do
+    expect(Event.create(
+      name: "The Big Event",
+      country: "United States",
+      day: 1,
+      month: 5,
+      year: 'Select',
+      description: "It was that big."
+    )).not_to be_valid
+  end
+
   it "has many memories" do
     expect(@event.memories.first).to eq(@memory1)
     expect(@event.memories.last).to eq(@memory2)
