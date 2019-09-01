@@ -77,7 +77,7 @@ RSpec.describe User, type: :model do
       username: "Lexi",
       email: "lexiexample.com",
       password: "12345678",
-      password_confirmation: "12345677",
+      password_confirmation: "12345678",
       bio: "In search of truth."
     )).not_to be_valid
   end
