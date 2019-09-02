@@ -10,9 +10,8 @@ RSpec.describe "Sessions" do
       password_confirmation: "12345678",
       bio: "Now in session."
     )
-    sign_in user
-    binding.pry
 
+    sign_in user
     # get root_path
     # expect(response).to render_template(:index) # add gem 'rails-controller-testing' to your Gemfile first.
     expect(response).to redirect_to user_path(1)
