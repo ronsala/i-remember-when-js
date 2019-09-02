@@ -2,8 +2,8 @@ require 'rails_helper'
 RSpec.describe "Sessions" do
   it "signs user in and out" do
     # user = create(:user)    ## uncomment if using FactoryBot
-    # user = User.create(email: 'test@test.com', password: "password", password_confirmation: "password") ## uncomment if not using FactoryBot
-    user = User.create(
+    user = User.create(email: 'test@test.com', password: "password", password_confirmation: "password") ## uncomment if not using FactoryBot
+    User.create(
       username: "Sam",
       email: "sam@example.com",
       password: "12345678",
@@ -11,14 +11,10 @@ RSpec.describe "Sessions" do
       bio: "Now in session."
     )
 
-    sign_in user
-    # get root_path
-    # expect(response).to render_template(:index) # add gem 'rails-controller-testing' to your Gemfile first.
-    binding.pry
+    post '/users/sign_in', params: { user: {username: "Sam", password: "12345678"} }
     expect(response).to redirect_to user_path(1)
-    
-    # sign_out user
-    # get root_path
-    # expect(response).not_to render_template(:index) # add gem 'rails-controller-testing' to your Gemfile first.
+
+    delete destroy_user_session_path
+    expect(response).to redirect_to '/'
   end
 end

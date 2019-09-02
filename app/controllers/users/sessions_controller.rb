@@ -9,13 +9,12 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    redirect_to user_path(1)
+  end
 
   # DELETE /resource/sign_out
   # def destroy
-  #   super
   # end
 
   # protected
