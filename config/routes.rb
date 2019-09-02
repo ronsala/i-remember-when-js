@@ -6,10 +6,11 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
-    sessions: 'users/sessions'
+    sessions: 'users/sessions',
   }
   get '/', to: 'welcome#home'
   root to: 'welcome#home'
+  get '/users', to: 'users#index'
 
   resources :users, shallow: true do
     resources :events, only: [:index]
