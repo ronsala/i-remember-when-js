@@ -21,7 +21,7 @@ RSpec.describe "User requests", type: :request do
   describe "POST create" do
     it "redirects to user_path if user created" do
       # post '/users', params: { user: {username: "Renee", email: "renee@example.com", password: "12345678", password_confirmation: "12345678", bio: "It all started a long time ago...."} }
-      post '/users', params: { user: {username: "Renee", email: "renee@example.com", password: "12345678", password_confirmation: "12345678", bio: "It all started a long time ago...."} }
+      post user_registration_path, params: { user: {username: "Renee", email: "renee@example.com", password: "12345678", password_confirmation: "12345678", bio: "It all started a long time ago...."} }
       expect(response).to redirect_to user_path(1)
     end
 
