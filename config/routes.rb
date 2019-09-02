@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
 
+  devise_for :users
   get '/', to: 'welcome#home'
 
   resources :users, shallow: true do
