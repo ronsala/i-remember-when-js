@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   # devise_for :users
 
   devise_for :users, controllers: {
-    registrations: 'users/sessions',
-    sessions: 'users/registrations'
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
   }
   get '/', to: 'welcome#home'
   root to: 'welcome#home'
