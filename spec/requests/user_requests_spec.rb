@@ -10,13 +10,13 @@ RSpec.describe "User requests", type: :request do
     end
   end
 
-  describe "GET new" do
-    it "renders the new template" do
-      get '/users/new'
-      expect(response).to have_http_status(:success)
-      expect(response).to render_template("new")
-    end
-  end
+  # describe "GET new" do
+  #   it "renders the new template" do
+  #     get '/users/new'
+  #     expect(response).to have_http_status(:success)
+  #     expect(response).to render_template("new")
+  #   end
+  # end
 
   describe "POST create" do
     it "redirects to user_path if user created" do
