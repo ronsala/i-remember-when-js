@@ -31,6 +31,7 @@ gem 'msgpack'
 gem 'rake'
 gem "nokogiri", ">= 1.10.4"
 gem 'devise'
+gem 'bcrypt'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
