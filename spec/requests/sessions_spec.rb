@@ -11,11 +11,14 @@ RSpec.describe "Sessions" do
       bio: "Now in session."
     )
     sign_in user
-    get root_path
-    expect(response).to render_template(:index) # add gem 'rails-controller-testing' to your Gemfile first.
+    binding.pry
+
+    # get root_path
+    # expect(response).to render_template(:index) # add gem 'rails-controller-testing' to your Gemfile first.
+    expect(response).to redirect_to user_path(1)
     
-    sign_out user
-    get root_path
-    expect(response).not_to render_template(:index) # add gem 'rails-controller-testing' to your Gemfile first.
+    # sign_out user
+    # get root_path
+    # expect(response).not_to render_template(:index) # add gem 'rails-controller-testing' to your Gemfile first.
   end
 end
