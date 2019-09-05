@@ -32,6 +32,7 @@ gem 'rake'
 gem "nokogiri", ">= 1.10.4"
 gem 'devise'
 gem 'bcrypt'
+gem 'bootstrap', '~> 4.3.1'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
