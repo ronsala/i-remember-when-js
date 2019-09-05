@@ -11,7 +11,7 @@ RSpec.describe "Registrations" do
     expect(response).to redirect_to user_path(1)
   end
 
-  it "renders new template if user not created" do
+  it "renders 'new' template if user not created" do
     post '/users', params: { user: {username: "Renee", email: "renee@example.com", password: "", bio: "It all started a long time ago...."} }
     expect(response).to render_template("new")
   end
