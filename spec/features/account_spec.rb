@@ -1,5 +1,6 @@
 require 'rails_helper'
 
-Rspec.describe "Creating account", type: :feature do
+RSpec.describe "Creating account", type: :feature do
+# Rspec.describe "Creating account", type: :feature do
   
 end
