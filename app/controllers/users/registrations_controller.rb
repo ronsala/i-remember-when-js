@@ -13,9 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    # binding.pry
-    @user = User.new(user_params)
-    
+    @user = User.create(user_params)
     if @user.save
       redirect_to @user
     else
