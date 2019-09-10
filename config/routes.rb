@@ -2,14 +2,15 @@
 
 Rails.application.routes.draw do
 
+  root to: 'welcome#home'
+
   # devise_for :users
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
   }
-  get '/', to: 'welcome#home'
-  root to: 'welcome#home'
+
   get '/users', to: 'users#index'
 
   resources :users, shallow: true do
