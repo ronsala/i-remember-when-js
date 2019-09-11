@@ -46,7 +46,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   gem 'rspec-rails', '~> 3.8'
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
-  gem "standard"
+  gem 'standard'
 end
 
 group :development do
@@ -59,6 +59,7 @@ group :development do
   gem 'pry-rails'
   gem 'rubocop', '~> 0.74.0', require: false
   gem 'solargraph'
+  gem 'reek'
 end
 
 group :test do
