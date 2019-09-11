@@ -46,6 +46,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   gem 'rspec-rails', '~> 3.8'
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+  gem "standard"
 end
 
 group :development do
@@ -57,6 +58,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'pry-rails'
   gem 'rubocop', '~> 0.74.0', require: false
+  gem 'solargraph'
 end
 
 group :test do
