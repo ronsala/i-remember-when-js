@@ -4,24 +4,20 @@ Rails.application.routes.draw do
 
   root to: 'welcome#home'
 
-  # devise_for :users
-
   devise_for :users, controllers: {
     registrations: 'users/registrations',
-    sessions: 'users/sessions',
+    sessions: 'users/sessions'
   }
-
-  get '/users', to: 'users#index'
-
-  resources :users, shallow: true do
-    resources :events, only: [:index]
-    resources :memories, only: [:index]
+  
+  resources :users, only: %i[index show], shallow: true do
+    resources :events
+    resources :memories
   end
 
-  resources :events, shallow: true do
+  resources :events, only: [:index] do
     resources :users, only: [:index]
     resources :memories, only: %i[index new create]
   end
 
-  resources :memories, except: %i[new create]
+  resources :memories, only: [:index]
 end
