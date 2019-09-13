@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'msgpack'
 gem 'rake'
 gem "nokogiri", ">= 1.10.4"
-gem 'devise'
+gem "devise", ">= 4.7.1"
 gem 'bcrypt'
 gem 'bootstrap', '~> 4.3.1'
 
