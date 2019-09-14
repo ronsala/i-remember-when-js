@@ -48,17 +48,6 @@ RSpec.describe Event, type: :model do
     expect(@event).to be_valid
   end
 
-  it "validates country selected" do
-    expect(Event.create(
-      name: "The Big Event",
-      country: "Select",
-      day: 1,
-      month: 5,
-      year: 1985,
-      description: "It was that big."
-    )).not_to be_valid
-  end
-
   it "validates year selected" do
     expect(Event.create(
       name: "The Big Event",
