@@ -8,10 +8,4 @@ class Event < ApplicationRecord
   validates :year, numericality: { message: 'Please select a year' }
   validates :name, presence: true
   validates :description, presence: true
-
-  def country_selected?
-    if country == 'Select'
-      errors.add(:country, 'Please select a country')
-    end
-  end
 end
