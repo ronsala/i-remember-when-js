@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Memory, type: :model do
-  let (:user) do
+  let(:user) do
     User.create(
       username: 'Eve',
       email: 'eve@example.com',
@@ -13,7 +13,7 @@ RSpec.describe Memory, type: :model do
     )
   end
 
-  let (:event) do
+  let(:event) do
     Event.create(
       name: 'The Big Event',
       country: 'United States',
@@ -24,7 +24,7 @@ RSpec.describe Memory, type: :model do
     )
   end
 
-  let (:memory) do
+  let(:memory) do
     Memory.create(
       event_id: event.id,
       user_id: user.id,
