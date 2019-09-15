@@ -5,19 +5,11 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show
-  
-  end
+  def show; end
 
   def edit; end
 
   def update; end
 
   def destroy; end
-
-  private
-
-  def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation, :bio, :admin)
-  end
 end
