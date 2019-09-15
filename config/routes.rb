@@ -1,14 +1,13 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-
   root to: 'welcome#home'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
-  
+
   resources :users, only: %i[index show], shallow: true do
     resources :events
     resources :memories

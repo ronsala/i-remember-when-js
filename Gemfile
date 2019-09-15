@@ -27,12 +27,12 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 
-gem 'msgpack'
-gem 'rake'
-gem "nokogiri", ">= 1.10.4"
-gem "devise", ">= 4.7.1"
 gem 'bcrypt'
 gem 'bootstrap', '~> 4.3.1'
+gem 'devise', '>= 4.7.1'
+gem 'msgpack'
+gem 'nokogiri', '>= 1.10.4'
+gem 'rake'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -44,8 +44,8 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
+  gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
   gem 'rspec-rails', '~> 3.8'
-  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
   gem 'standard'
 end
 
@@ -54,22 +54,22 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'pry-rails'
+  gem 'reek'
   gem 'rubocop', '~> 0.74.0', require: false
   gem 'solargraph'
-  gem 'reek'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'webdrivers'
-  gem 'simplecov', require: false
   gem 'database_cleaner'
   gem 'rails-controller-testing'
+  gem 'simplecov', require: false
+  gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

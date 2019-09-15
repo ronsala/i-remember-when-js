@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 # todo
 # RSpec.describe "welcome/home.html.erb", type: :view do
