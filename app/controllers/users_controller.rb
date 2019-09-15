@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Index and show users
 class UsersController < ApplicationController
   def index
     @users = User.all
