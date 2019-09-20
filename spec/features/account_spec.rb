@@ -24,7 +24,7 @@ end
 RSpec.describe 'Creating account with Facebook', type: :feature do
   it "Shows user's page" do
     visit new_user_registration_path
-    click_button 'Sign Up With Facebook'
+    click_button 'Continue with Facebook'
     expect(page).to have_text 'Ronald'
   end
 end
