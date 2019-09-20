@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Creating account', type: :feature do
+RSpec.describe 'Creating account with username and password', type: :feature do
   it 'Shows registration page' do
     visit root_path
     click_link 'Sign Up'
@@ -17,7 +17,14 @@ RSpec.describe 'Creating account', type: :feature do
     fill_in 'Retype Password', with: '12345678'
     fill_in 'Bio', with: 'From bewilderment to enlightenment.'
     click_button 'Sign Up'
-    expect(page).to have_current_path '/users/1'
     expect(page).to have_text 'John'
+  end
+end
+
+RSpec.describe 'Creating account with Facebook', type: :feature do
+  it "Shows user's page" do
+    visit new_user_registration_path
+    click_button 'Sign Up With Facebook'
+    expect(page).to have_text 'Ronald'
   end
 end
