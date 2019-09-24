@@ -82,4 +82,5 @@ This app is available as open source under the terms of the [MIT License](https:
 * todo photo credits
 * PurpleBooth for the [README-Template.md gist](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2).
 * [Flatiron School](https://flatironschool.com) for instruction and community.
+[FreePrivacyPolicy](https://www.freeprivacypolicy.com) for privacy policy help.
 * My spouse for support and reality checking.
