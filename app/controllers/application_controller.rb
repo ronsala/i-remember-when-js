@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# See https://guides.rubyonrails.org/action_controller_overview.html.
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
