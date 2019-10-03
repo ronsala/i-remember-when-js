@@ -23,6 +23,6 @@ Rails.application.routes.draw do
   resources :memories, only: [:index]
 
   devise_scope :user do
-    delete 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
+    delete 'sign_out', to: 'devise/sessions#destroy' # TODO, as: :destroy_user_session
   end
 end
