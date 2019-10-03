@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def current_user
+    binding.pry
     if logged_in?
       User.find_by(id: session[:user_id])
     end
