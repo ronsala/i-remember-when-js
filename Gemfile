@@ -37,6 +37,7 @@ gem 'jquery-rails'
 gem 'msgpack'
 gem 'nokogiri', '>= 1.10.4'
 gem 'rake'
+gem "rubyzip", ">= 1.3.0"
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

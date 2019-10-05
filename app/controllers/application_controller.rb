@@ -8,13 +8,14 @@ class ApplicationController < ActionController::Base
 
   def current_user
     binding.pry
-    if logged_in?
+    # if logged_in?
       User.find_by(id: session[:user_id])
-    end
+    # end
+  
   end
 
   def logged_in?
-    !!session[:user_id]
+    !!current_user
   end
 
   protected
