@@ -9,8 +9,16 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /users/sign_in
   def create
-    @user = User.find_or_create_by(username: user_params[:username])
+    @user = User.find_by(sign_in_params)
     session[:current_user_id] = @user.id
     redirect_to @user
+  end
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_in) do |user_params|
+      user_params.permit(:username)
+    end
   end
 end

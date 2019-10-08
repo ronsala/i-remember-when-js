@@ -14,7 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    @user = User.create(sign_up_params)
+    @user = User.new(sign_up_params)
     if @user.save
       redirect_to @user
     else
