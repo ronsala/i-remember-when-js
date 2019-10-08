@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.describe 'Sessions' do
   it 'signs user in and out with username and password' do
     User.create(username: 'Sam', password: '123456', email: 'sam@example.com', bio: "Sam's bio....")
-    post '/users/sign_in', params: { user: { username: 'Sam', password: '123456' } }
+    post '/account/sign_in', params: { user: { username: 'Sam', password: '123456' } }
     expect(response).to redirect_to user_path(1)
     expect(session).to be_truthy
     delete destroy_user_session_path

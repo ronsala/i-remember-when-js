@@ -7,7 +7,7 @@ class Users::SessionsController < Devise::SessionsController
     render '/users/sign_in'
   end
 
-  # POST /users/sign_in
+  # POST /account/sign_in
   def create
     @user = User.find_by(sign_in_params)
     session[:current_user_id] = @user.id
