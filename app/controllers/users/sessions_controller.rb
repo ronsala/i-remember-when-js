@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
+# For authenticating and authorizing users.
 class Users::SessionsController < Devise::SessionsController
-
   # GET /users/sign_in
   def new
     render '/users/sign_in'

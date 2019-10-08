@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# For user account management.
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters, if: :devise_controller?
   # before_action :configure_sign_up_params, only: [:create]
@@ -13,14 +14,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    # binding.pry
-    @user = User.create(params)
+    @user = User.create(sign_up_params)
     if @user.save
       redirect_to @user
     else
       render :new
     end
-    # super
   end
 
   # GET /resource/edit
@@ -51,7 +50,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up) do |user_params| 
+    devise_parameter_sanitizer.permit(:sign_up) do |user_params|
       user_params.permit(:username, :email, :password, :password_confirmation, :bio)
     end
   end
@@ -62,18 +61,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_sign_up_path_for(user)
+    super(user)
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
-  # end
-
-  # private
-
-  # def user_params #TODO
-  #   params.require(:user).permit(:username, :email, :password, :password_confirmation, :bio, :admin)
   # end
 end
