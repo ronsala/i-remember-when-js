@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'welcome#home'
   get '/pages/:page', to: 'pages#show'
 
-  devise_for :users, controllers: {
+  devise_for :users, path: 'account', controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations',
     sessions: 'users/sessions'
