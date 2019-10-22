@@ -2,16 +2,20 @@
 
 # For authenticating and authorizing users.
 class Users::SessionsController < Devise::SessionsController
-  # GET /users/sign_in
+  # GET /account/sign_in
   def new
     @user = User.new
   end
 
   # POST /account/sign_in
   def create
-    @user = User.find_by(email: sign_in_params[:email])
-    session[:current_user_id] = @user.id
-    redirect_to @user
+    @user = User.find_by(username: sign_in_params[:username])
+    if @user && @user.valid_password?(sign_in_params[:password])
+      session[:current_user_id] = @user.id
+      redirect_to @user
+    else
+      redirect_to '/account/sign_in'
+    end
   end
 
   # DELETE account/sign_out
@@ -24,7 +28,7 @@ class Users::SessionsController < Devise::SessionsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_in) do |user_params|
-      user_params.permit(:email, :password, :remember_me)
+      user_params.permit(:username, :password, :remember_me)
     end
   end
 end
