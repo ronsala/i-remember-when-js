@@ -2,9 +2,15 @@
 
 # See https://guides.rubyonrails.org/action_controller_overview.html.
 class EventsController < ApplicationController
-  def index; end
+  def index
+    @events = Event.all
+    render 'events/index'
+  end
 
-  def new; end
+  def new
+    @event = Event.new
+    render 'events/new'
+  end
 
   def create; end
 

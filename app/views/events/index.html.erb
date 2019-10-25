@@ -1,2 +1,10 @@
 <h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<form action="/users/<% current_user.id %>/events/new">
+  <button type=submit">Add Event</button>
+</form>
+
+<p><% @events.each do |e|%></p>
+  <tr>
+    <td><a href="/events/<%= e.id %>"<%= e.name %></td>>
+  </tr>
+<% end %>
