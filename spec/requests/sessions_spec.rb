@@ -7,6 +7,7 @@ RSpec.describe 'Sessions' do
     post '/account/sign_in', params: { user: { username: 'Sam', password: '123456' } }
     expect(response).to redirect_to user_path(1)
     expect(session).to be_truthy
+    expect(current_user).to be_truthy
     get destroy_user_session_path
     expect(response).to redirect_to '/'
   end

@@ -9,6 +9,7 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /account/sign_in
   def create
+    # binding.pry
     @user = User.find_by(username: sign_in_params[:username])
     if @user&.valid_password?(sign_in_params[:password])
       session[:current_user_id] = @user.id

@@ -1,10 +1,13 @@
 <h1>Events#index</h1>
-<form action="/users/<% current_user.id %>/events/new">
-  <button type=submit">Add Event</button>
-</form>
 
-<p><% @events.each do |e|%></p>
-  <tr>
-    <td><a href="/events/<%= e.id %>"<%= e.name %></td>>
-  </tr>
+<% if current_user %>
+  <%= link_to 'Add Event', new_user_event_path %>
+<% end %>
+
+<% if not @events.empty? %>
+  <p><% @events.each do |e|%></p>
+    <tr>
+      <td><a href="/events/<%= e.id %>"<%= e.name %></td>>
+    </tr>
+  <% end %>
 <% end %>
