@@ -10,7 +10,8 @@ class Users::SessionsController < Devise::SessionsController
   # POST /account/sign_in
   def create
     # binding.pry
-    @user = User.find_by(username: sign_in_params[:username])
+    @user = User.find_by(email: sign_in_params[:email])
+    # binding.pry
     if @user&.valid_password?(sign_in_params[:password])
       session[:current_user_id] = @user.id
       redirect_to @user
@@ -33,7 +34,7 @@ class Users::SessionsController < Devise::SessionsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_in) do |user_params|
-      user_params.permit(:username, :password, :remember_me)
+      user_params.permit(:email, :password, :remember_me)
     end
   end
 end
