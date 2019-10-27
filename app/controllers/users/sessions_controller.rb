@@ -9,11 +9,9 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /account/sign_in
   def create
-    # binding.pry
     @user = User.find_by(email: sign_in_params[:email])
-    # binding.pry
     if @user&.valid_password?(sign_in_params[:password])
-      session[:current_user_id] = @user.id
+      session[:current_user] = current_user
       redirect_to @user
     else
       redirect_to '/account/sign_in'
