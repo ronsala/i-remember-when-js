@@ -13,4 +13,13 @@ RSpec.describe 'Sessions' do
     get destroy_user_session_path
     expect(response).to redirect_to '/'
   end
+
+  it 'does not signs user in with incorrect password' do
+    User.create(username: 'Matt', password: '123456', email: 'matt@example.com', bio: "Matt's bio....")
+    post '/account/sign_in', params: { user: { email: 'matt@example.com', password: '654321' } }
+    expect(response).to redirect_to new_user_session_path
+    # expect(session).to be_falsey
+    expect(session[:current_user]).to eq(nil)
+    expect(response).to redirect_to new_user_session_path
+  end
 end
