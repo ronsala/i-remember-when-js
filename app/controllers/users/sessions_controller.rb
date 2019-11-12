@@ -24,6 +24,13 @@ class Users::SessionsController < Devise::SessionsController
     redirect_to '/'
   end
 
+  def omniauth
+    @user = User.from_omniauth(auth)
+    @user.save
+    session[:user_id] = @user.id
+    redirect_to @user
+  end
+
   protected
 
   def auth

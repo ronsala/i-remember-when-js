@@ -2,6 +2,10 @@
 
 Rails.application.routes.draw do
   root to: 'welcome#home'
+  # get '/auth/:provider/callback' => 'sessions#omniauth'
+  # get '/auth/:provider/callback', to: 'sessions#omniauth'
+  # get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
+  # get '/auth/google_oauth2', to: 'sessions#omniauth'
   get '/pages/:page', to: 'pages#show'
 
   devise_for :users, path: 'account', controllers: {
