@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # get '/auth/google_oauth2', to: 'sessions#omniauth'
   get '/pages/:page', to: 'pages#show'
 
-  devise_for :users, path: 'account', controllers: {
+  devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations',
     sessions: 'users/sessions'

@@ -6,5 +6,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 # OmniAuth.config.full_host = "http://localhost:3000"
 
   # provider :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'] # TODO, scope: 'email'
-  provider :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"]#, skip_jwt: true
+  # provider :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"]#, skip_jwt: true
 end

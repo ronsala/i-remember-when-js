@@ -32,15 +32,20 @@ class User < ApplicationRecord
   # end
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.token = auth.credentials.token
-      user.expires = auth.credentials.expires
-      user.expires_at = auth.credentials.expires_at
-      user.refresh_token = auth.credentials.refresh_token
+    where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|
+      # binding.pry
+      user.email = auth.info.email #todo Gets all info in original block.
+      user.name =auth.info.name
+      # user.token = auth.credentials.token
+      # user.expires = auth.credentials.expires
+      # user.expires_at = auth.credentials.expires_at
+      # user.refresh_token = auth.credentials.refresh_token
+      user.password = Devise.friendly_token
     end
   end
 
   def self.new_with_session(params, session)
+    binding.pry
     super.tap do |user|
       if data = session['devise.facebook_data'] && session['devise.facebook_data']['extra']['raw_info']
         user.email = data['email'] if user.email.blank?
