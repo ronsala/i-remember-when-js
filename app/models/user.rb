@@ -45,7 +45,7 @@ class User < ApplicationRecord
   end
 
   def self.new_with_session(params, session)
-    binding.pry
+    # binding.pry
     super.tap do |user|
       if data = session['devise.facebook_data'] && session['devise.facebook_data']['extra']['raw_info']
         user.email = data['email'] if user.email.blank?

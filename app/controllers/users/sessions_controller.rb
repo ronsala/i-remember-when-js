@@ -14,7 +14,7 @@ class Users::SessionsController < Devise::SessionsController
       session[:current_user] = current_user
       redirect_to @user
     else
-      redirect_to '/account/sign_in'
+      # redirect_to '/account/sign_in'
     end
   end
 
