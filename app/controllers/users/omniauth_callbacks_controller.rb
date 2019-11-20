@@ -20,7 +20,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # end
 
   def google_oauth2
-    binding.pry
     @user = User.from_omniauth(request.env["omniauth.auth"])
     if @user.persisted?
       sign_in @user, :event => :authentication

@@ -35,7 +35,7 @@ class User < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|
       # binding.pry
       user.email = auth.info.email #todo Gets all info in original block.
-      user.name =auth.info.name
+      user.username = auth.info.name
       # user.token = auth.credentials.token
       # user.expires = auth.credentials.expires
       # user.expires_at = auth.credentials.expires_at
