@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   get '/pages/:page', to: 'pages#show'
 
   devise_for :users, controllers: {
-    omniauth_callbacks: 'users/omniauth_callbacks',
-    registrations: 'users/registrations',
-    sessions: 'users/sessions'
+    # omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations: 'users/registrations'#,
+    # sessions: 'users/sessions'
   }
 
   resources :users, only: %i[index show], shallow: true do

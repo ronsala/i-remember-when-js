@@ -20,8 +20,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # end
 
   def google_oauth2
+    binding.pry
     @user = User.from_omniauth(request.env["omniauth.auth"])
-# binding.pry
     if @user.persisted?
       sign_in @user, :event => :authentication
       set_flash_message(:notice, :success, :kind => "Google") if is_navigational_format?
@@ -34,9 +34,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # https://github.com/plataformatec/devise#omniauth
 
   # GET|POST /resource/auth/twitter
-  # def passthru
-  #   super
-  # end
+  def passthru
+    super
+  end
 
   # GET|POST /users/auth/twitter/callback
   # def failure
