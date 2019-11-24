@@ -2,23 +2,23 @@
 
 # For authenticating and authorizing users.
 class Users::SessionsController < Devise::SessionsController
-  # GET /account/sign_in
+  # GET /users/sign_in
   def new
     @user = User.new
   end
 
-  # POST /account/sign_in
+  # POST /users/sign_in
   def create
     @user = User.find_by(email: sign_in_params[:email])
     if @user&.valid_password?(sign_in_params[:password])
       session[:current_user] = current_user
       redirect_to @user
     else
-      # redirect_to '/account/sign_in'
+      redirect_to '/users/sign_in'
     end
   end
 
-  # DELETE account/sign_out
+  # DELETE users/sign_out
   def destroy
     session.clear
     redirect_to '/'

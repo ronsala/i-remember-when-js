@@ -7,12 +7,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
   # before_action :configure_sign_up_params, only: [:create]
 
-  # GET /account/sign_up
+  # GET /users/sign_up
   def new
     super
   end
 
-  # POST /account
+  # POST /users
   def create
     @user = User.new(sign_up_params)
     if @user.save
