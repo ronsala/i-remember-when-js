@@ -3,11 +3,11 @@
 I Remember When crowdsources first-hand history, allowing users to read and write memories of events of historical interest.
 
 You can watch a video demo at
-<todo>.
+TODO.
 For a transcript of the video, see demo_transcript.md.
 
 You can read a blog post about the creation of I Remember When at
-<todo>
+TODO.
 
 ## Installation
 
@@ -24,9 +24,9 @@ rails db:migrate
 
 The app uses the [dotenv-rails gem](https://github.com/bkeepers/dotenv) for an environment variable for security. Create a file in the top level of the directory, with a .env extension. This file should not be checked into a public repository. In this file, set the values you want to ensure user and admin login secrets, which will be accessible in the ENV hash. For example:
 
-*config.env:*
+*.env:*
 
-```
+```text
 SECRET_KEY=YOURSECRETKEYHERE
 ADMIN_KEY=YOURADMINKEYHERE
 ```
@@ -66,7 +66,7 @@ rspec spec
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/ronsala/i-remember-when. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at <https://github.com/ronsala/i-remember-when>. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## Code of Conduct
 
@@ -79,7 +79,7 @@ This app is available as open source under the terms of the [MIT License](https:
 ## Acknowledgments
 
 * Those who share their memories that we may all benefit from the lessons of history.
-* todo photo credits
+<!-- * TODO photo credits -->
 * PurpleBooth for the [README-Template.md gist](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2).
 * [Flatiron School](https://flatironschool.com) for instruction and community.
 [FreePrivacyPolicy](https://www.freeprivacypolicy.com) for privacy policy help.
