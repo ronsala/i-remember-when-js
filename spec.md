@@ -25,7 +25,7 @@ Specs:
 - [x] Include at least two has_many through relationships (x has_many y through z; e.g. Recipe has_many Items through Ingredients)
 
   _user.rb_:
-  
+
   has_many :events, through: :memories
 
   _event.rb_:
@@ -46,7 +46,7 @@ Specs:
 
   _views/memories/new.html.erb_:
 
-  
+  Text fields setting :title, :body
 
 - [ ] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
 - [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
