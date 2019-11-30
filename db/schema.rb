@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_25_094825) do
+ActiveRecord::Schema.define(version: 2019_11_30_042755) do
 
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.string "country"
-    t.integer "month"
-    t.integer "year"
     t.string "description"
+    t.date "date"
   end
 
   create_table "memories", force: :cascade do |t|
