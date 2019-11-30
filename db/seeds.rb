@@ -17,9 +17,10 @@ end
 
 40.times do
   Event.create(
-    name: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 2),
+    name: (Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 2).gsub('.', '').titleize),
     country: Faker::Address.country,
     date: Faker::Date.between(from: 120.years.ago, to: Date.today),
-    description: Faker::Lorem.paragraphs(number: 1, supplemental: true)
+    description: (Faker::Lorem.paragraphs(number: 1, supplemental: true)).to_s.gsub(/"|\[|\]/, ''),
+    user_id: Faker::Number.between(from: 1, to: 20)
   )
 end
