@@ -4,12 +4,10 @@ require 'rails_helper'
 
 RSpec.describe Event, type: :model do
   before(:each) do
-    @event = Event.create(
+    @event1 = Event.create(
       name: 'The Big Event',
       country: 'United States',
-      day: 1,
-      month: 5,
-      year: 1985,
+      date: Faker::Date.between(from: 120.years.ago, to: Date.today),
       description: 'It was that big.'
     )
 
@@ -44,19 +42,17 @@ RSpec.describe Event, type: :model do
     )
   end
 
-  it 'is valid with name, country, day, month, year, description' do
+  it 'is valid with name, country, date, description' do
     expect(@event).to be_valid
   end
 
   it 'validates year selected' do
     expect(Event.create(
-             name: 'The Big Event',
-             country: 'United States',
-             day: 1,
-             month: 5,
-             year: 'Select',
-             description: 'It was that big.'
-           )).not_to be_valid
+      name: 'The Big Event',
+      country: 'United States',
+      date: 'Select',
+      description: 'It was that big.'
+    )).not_to be_valid
   end
 
   it 'has many memories' do

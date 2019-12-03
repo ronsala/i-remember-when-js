@@ -24,8 +24,11 @@ end
   )
 end
 
-200.times.do
+200.times do
   Memory.create(
-
+    event_id: Faker::Number.between(from: 1, to: 40),
+    user_id: Faker::Number.between(from: 1, to: 20),
+    title: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 2).gsub('.', '').titleize,
+    body: Faker::Lorem.paragraphs(number: 1, supplemental: true).to_s.gsub(/"|\[|\]/, '')
   )
 end
