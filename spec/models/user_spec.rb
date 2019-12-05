@@ -7,19 +7,15 @@ RSpec.describe User, type: :model do
     @event1 = Event.create(
       name: 'The Big Event',
       country: 'United States',
-      day: 1,
-      month: 5,
-      year: 1985,
+      date: Faker::Date.between(from: 120.years.ago, to: Date.today),
       description: 'It was that big.'
     )
 
     @event2 = Event.create(
-      name: 'The Big Event',
-      country: 'United States',
-      day: 1,
-      month: 5,
-      year: 1985,
-      description: 'It was that big.'
+      name: 'The Huge Event',
+      country: 'Canada',
+      date: Faker::Date.between(from: 120.years.ago, to: Date.today),
+      description: 'It was that huge. And snowed.'
     )
 
     @user1 = User.create(

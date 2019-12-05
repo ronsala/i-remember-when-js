@@ -14,12 +14,10 @@ RSpec.describe Memory, type: :model do
   end
 
   let(:event) do
-    Event.create(
+    event = Event.create(
       name: 'The Big Event',
       country: 'United States',
-      day: 1,
-      month: 5,
-      year: 1985,
+      date: Faker::Date.between(from: 120.years.ago, to: Date.today),
       description: 'It was that big.'
     )
   end

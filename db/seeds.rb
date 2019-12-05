@@ -1,20 +1,34 @@
 # frozen_string_literal: true
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
 
-# require 'faker'
+User.destroy_all
+Event.destroy_all
+Memory.destroy_all
 
-# 20.times.do
-#   User.create(
-#     username: Faker::Name.unique.name,
-#     bio: Faker::Lorem.paragraph(sentence_count: 2),
-#     email: Faker::Internet.email,
-#     password: '123456'
-#   )
-# end
+20.times do
+  User.create(
+    username: Faker::Name.unique.name,
+    bio: Faker::Lorem.paragraph(sentence_count: 2),
+    email: Faker::Internet.email,
+    password: '123456'
+  )
+end
+
+40.times do
+  Event.create(
+    name: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 2).gsub('.', '').titleize,
+    country: Faker::Address.country,
+    date: Faker::Date.between(from: 120.years.ago, to: Date.today),
+    description: Faker::Lorem.paragraphs(number: 1, supplemental: true).to_s.gsub(/"|\[|\]/, '')
+  )
+end
+
+200.times do
+  Memory.create(
+    event_id: Faker::Number.between(from: 1, to: 40),
+    user_id: Faker::Number.between(from: 1, to: 20),
+    title: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 2).gsub('.', '').titleize,
+    body: Faker::Lorem.paragraphs(number: 1, supplemental: true).to_s.gsub(/"|\[|\]/, '')
+  )
+end

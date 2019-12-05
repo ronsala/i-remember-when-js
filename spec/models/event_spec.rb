@@ -4,12 +4,10 @@ require 'rails_helper'
 
 RSpec.describe Event, type: :model do
   before(:each) do
-    @event = Event.create(
+    @event1 = Event.create(
       name: 'The Big Event',
       country: 'United States',
-      day: 1,
-      month: 5,
-      year: 1985,
+      date: Faker::Date.between(from: 120.years.ago, to: Date.today),
       description: 'It was that big.'
     )
 
@@ -30,42 +28,40 @@ RSpec.describe Event, type: :model do
     )
 
     @memory1 = Memory.create(
-      event_id: @event.id,
+      event_id: @event1.id,
       user_id: @user1.id,
       title: 'My Earliest Memory',
       body: 'It was a dark and stormy night. Out stepped the captain....'
     )
 
     @memory2 = Memory.create(
-      event_id: @event.id,
+      event_id: @event1.id,
       user_id: @user2.id,
       title: 'Life Changing',
       body: 'Best speech ever!'
     )
   end
 
-  it 'is valid with name, country, day, month, year, description' do
-    expect(@event).to be_valid
+  it 'is valid with name, country, date, description' do
+    expect(@event1).to be_valid
   end
 
   it 'validates year selected' do
     expect(Event.create(
-             name: 'The Big Event',
-             country: 'United States',
-             day: 1,
-             month: 5,
-             year: 'Select',
-             description: 'It was that big.'
-           )).not_to be_valid
+      name: 'The Big Event',
+      country: 'United States',
+      date: 'Select',
+      description: 'It was that big.'
+    )).not_to be_valid
   end
 
   it 'has many memories' do
-    expect(@event.memories.first).to eq(@memory1)
-    expect(@event.memories.last).to eq(@memory2)
+    expect(@event1.memories.first).to eq(@memory1)
+    expect(@event1.memories.last).to eq(@memory2)
   end
 
   it 'has many users through memories' do
-    expect(@event.users.first).to eq(@user1)
-    expect(@event.users.last).to eq(@user2)
+    expect(@event1.users.first).to eq(@user1)
+    expect(@event1.users.last).to eq(@user2)
   end
 end
