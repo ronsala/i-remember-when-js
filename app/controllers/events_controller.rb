@@ -3,7 +3,7 @@
 # See https://guides.rubyonrails.org/action_controller_overview.html.
 class EventsController < ApplicationController
   def index
-    @events = Event.all.sort_by(&:name)
+    @events = Event.all.sort_by(&:date)
     render 'events/index'
   end
 

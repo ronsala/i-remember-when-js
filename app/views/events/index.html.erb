@@ -13,7 +13,7 @@
 <% if !@events.empty? %>
  <% @events.each do |e| %>
    <tr>
-     <td><%= link_to e.name, event_path(e) %></a></td>
+     <td><%= e.date %>, <%= e.country %><%= link_to e.name, event_path(e) %></a><br></td>
    </tr>
  <% end %>
 <% end %>
