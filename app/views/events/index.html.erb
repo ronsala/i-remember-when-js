@@ -1,13 +1,17 @@
-<h1>Events#index</h1>
+<h1>Events</h1>
+
+<p>Find events of historical interest to read about or add your own.</p>
 
 <% if current_user %>
-  <%= link_to 'Add Event', new_user_event_path %>
-<% end %>
+  <%= button_to 'Add Event', new_user_event_path(current_user), method: :get %>
+<% else %>
+  <%= button_to 'Add Event', new_user_session_path %>
+<% end %><br>
 
-<% if not @events.empty? %>
-  <p><% @events.each do |e|%></p>
-    <tr>
-      <td><a href="/events/<%= e.id %>"<%= e.name %></td>>
-    </tr>
-  <% end %>
+<% if !@events.empty? %>
+ <% @events.each do |e| %>
+   <tr>
+     <td><%= link_to e.name, event_path(e) %><%= format_date(e.date) %>, <%= e.country %><br><br></td>
+   </tr>
+ <% end %>
 <% end %>
