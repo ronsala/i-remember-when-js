@@ -3,7 +3,7 @@
 <p>Find events of historical interest to read about or add your own.</p>
 
 <% if current_user %>
-  <%= button_to 'Add Event', new_user_event_path %>
+  <%= button_to 'Add Event', new_user_event_path(current_user), method: :get %>
 <% else %>
   <%= button_to 'Add Event', new_user_session_path %>
 <% end %><br>
