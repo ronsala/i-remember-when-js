@@ -7,16 +7,24 @@ class EventsController < ApplicationController
     render 'events/index'
   end
 
-  def new
-    @event = Event.new
-    render 'events/new'
-  end
+  def new; end
 
   def create
+    # binding.pry
     date = Date.new(*convert_date(event_params))
+    @event = Event.new(name: event_params[:name], country: event_params[:country], description: event_params[:description], user_id: current_user.id, date: date)
+    if @event.save
+      redirect_to @event
+    else
+      render :new
+    end
   end
 
-  def show; end
+  def show
+    # binding.pry
+    @event = Event.find(params[:id])
+    render :show
+  end
 
   def edit; end
 
@@ -27,7 +35,7 @@ class EventsController < ApplicationController
   protected
 
   def event_params
-    params.require(:event).permit(:name, :'date(3i)', :'date(2i)', :'date(1i)', :country, :description, :user_id)
+    params.require(:event).permit(:name, :'date(3i)', :'date(2i)', :'date(1i)', :country, :description)
   end
 
   # Converts date hash in event_params to Date object.
