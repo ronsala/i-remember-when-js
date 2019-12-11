@@ -1,5 +1,19 @@
 <h1><%= @event.name %></h1>
-<p><%= @event.country %></p>
-<p><%= @event.date %></p>
+<p><%= @event.country %>, <%= format_date(@event.date) %></p>
+<p>Created by <%= link_to @event.user.username, user_path(@event.user) %></p>
 <p><%= @event.description %></p>
-<p><%= @event.user.username %></p>
+
+<% if current_user %>
+  <%= button_to 'Add Memory of This Event', new_user_memory_path(current_user), method: :get %>
+<% else %>
+  <%= button_to 'Add Memory of This Event', new_user_session_path %>
+<% end %><br>
+
+<h2>Memories</h2>
+<% if !@events.memories.empty? %>
+ <% @events.memories.each do |m| %>
+   <tr>
+     <td><%= link_to m.title, memory_path(m) %></td>
+   </tr>
+ <% end %>
+<% end %>
