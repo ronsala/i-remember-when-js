@@ -1,18 +1,3 @@
-<h1>New Memory</h1>
+<h1>Create a Memory</h1>
 
-<%= form_for(url: user_memories_path(current_user.id)) do |f| %>
-
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Create Memory" %>
-  </div>
-<% end %>
+<%= render partial: "form", locals: {memory: @memory} %>
