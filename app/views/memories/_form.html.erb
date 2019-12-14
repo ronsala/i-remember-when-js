@@ -1,7 +1,8 @@
+<br>
 <%= form_with scope: :memory, url: user_memories_path do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :body %>
-  <%= f.text_area(:body, size: "125x8") %>
+  <p><%= f.label :title %>: <%= f.text_field :title %></p>
+  <p><em>What do you want to call your memory?</em></p><br>
+  <%= f.label :"Your Memory" %>:<br>
+  <%= f.text_area(:body, size: "125x8") %><br>
   <%= f.submit :Submit %>
 <% end %>
