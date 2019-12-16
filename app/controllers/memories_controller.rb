@@ -3,11 +3,19 @@
 class MemoriesController < ApplicationController
   def index; end
 
-  def new
-    
-  end
+  def new; end
 
-  def create; end
+  def create
+    @memory = Memory.new(memory_params)
+    @memory.event_id = params[:event_id]
+    @memory.user_id = current_user.id
+
+    if @memory.save
+      redirect_to @memory
+    else
+      render :new
+    end
+  end
 
   def show; end
 
@@ -16,4 +24,10 @@ class MemoriesController < ApplicationController
   def update; end
 
   def destroy; end
+
+protected
+
+  def memory_params
+    params.require(:memory).permit(:title, :body, :event_id)
+  end
 end
