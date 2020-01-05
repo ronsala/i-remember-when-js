@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class MemoriesController < ApplicationController
+  # TODO test merge
   def index; end
 
   def new; end
