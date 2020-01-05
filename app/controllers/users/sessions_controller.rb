@@ -2,6 +2,8 @@
 
 # For authenticating and authorizing users.
 class Users::SessionsController < Devise::SessionsController
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  skip_before_action :verify_signed_out_user
   # GET /users/sign_in
   def new
     @user = User.new
@@ -11,10 +13,12 @@ class Users::SessionsController < Devise::SessionsController
   def create
     @user = User.find_by(email: sign_in_params[:email])
     if @user&.valid_password?(sign_in_params[:password])
-      session[:current_user] = current_user
+      #TODO
+      # session[:current_user] = current_user
+      session[:user_id] = @user.id
       redirect_to @user
     else
-      redirect_to '/users/sign_in'
+      redirect_to user_session_path
     end
   end
 
