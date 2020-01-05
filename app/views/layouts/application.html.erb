@@ -16,29 +16,33 @@
       <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
       <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
       <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
-
+      <%= current_user.username if current_user %>
       <ul class="nav justify-content-end">
         <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link" <%= link_to 'Home', root_path %></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/about">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/events">Events</a>
+          <a class="nav-link" <%= link_to 'Events', events_path %></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/memories">Memories</a>
+          <a class="nav-link" <%= link_to 'Writers', users_path %></a>
         </li>
+      <% if !current_user %>
         <li class="nav-item">
-          <a class="nav-link" href="/users/sign_in">Sign In</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/users/sign_out">Sign Out</a>
+          <a class="nav-link" <%= link_to 'Sign In', new_user_session_path %></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" <%= link_to 'Sign Up', new_user_registration_path %></a>
         </li>
+      <% end %>
+      <% if current_user %>
+        <li class="nav-item">
+          <a class="nav-link" <%= link_to 'Sign Out', destroy_user_session_path %></a>
+        </li>
+      <% end %>
       </ul>
       <%= yield %>
       <footer id="footer">

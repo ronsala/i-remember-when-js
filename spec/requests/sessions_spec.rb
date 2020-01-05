@@ -9,7 +9,7 @@ RSpec.describe 'Sessions' do
     post '/users/sign_in', params: { user: { email: 'sam@example.com', password: '123456' } }
     expect(response).to redirect_to user_path(1)
     expect(session).to be_truthy
-    expect(session[:current_user]).to_not eq(nil)
+    expect(session[:user_id]).to_not eq(nil)
     get destroy_user_session_path
     expect(response).to redirect_to '/'
   end
