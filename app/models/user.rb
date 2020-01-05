@@ -11,14 +11,10 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|
-      user.email = auth.info.email #todo Gets all info in original block.
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
       user.username = auth.info.name
-      # user.token = auth.credentials.token
-      # user.expires = auth.credentials.expires
-      # user.expires_at = auth.credentials.expires_at
-      # user.refresh_token = auth.credentials.refresh_token
-      user.password = Devise.friendly_token
     end
   end
 end
