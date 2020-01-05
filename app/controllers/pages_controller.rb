@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
+# Routes static pages.
 class PagesController <ApplicationController
-  def show
-    render template: "pages/#{params[:page]}"
+  def about
+    render 'about'
   end
 end
