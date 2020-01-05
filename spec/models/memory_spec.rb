@@ -14,7 +14,7 @@ RSpec.describe Memory, type: :model do
   end
 
   let(:event) do
-    event = Event.create(
+    Event.create(
       name: 'The Big Event',
       country: 'United States',
       date: Faker::Date.between(from: 120.years.ago, to: Date.today),
