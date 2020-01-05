@@ -2,11 +2,8 @@
 
 Rails.application.routes.draw do
   root to: 'welcome#home'
-  # get '/auth/:provider/callback' => 'sessions#omniauth'
-  # get '/auth/:provider/callback', to: 'sessions#omniauth'
-  # get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
-  # get '/auth/google_oauth2', to: 'sessions#omniauth'
-  get '/pages/:page', to: 'pages#show'
+  # get '/pages/:page', to: 'pages#show', as: '/:page'
+  get '/about', to: 'pages#about'
 
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
