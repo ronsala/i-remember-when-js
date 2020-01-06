@@ -22,7 +22,7 @@
           <a class="nav-link" <%= link_to 'Home', root_path %></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/about">About</a>
+          <a class="nav-link" <%= link_to 'About', about_path %></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" <%= link_to 'Events', events_path %></a>
@@ -47,7 +47,7 @@
       <%= yield %>
       <footer id="footer">
 
-      <center><p>©2019 Ron Sala<a href=mailto:ron.sala@gmail.com> Contact </a>|<a href="/pages/privacy"> Privacy </a></cp></center>
+      <center><p>©2019 Ron Sala<a href=mailto:ron.sala@gmail.com> Contact </a>|<a <%= link_to ' Privacy', privacy_path %></a></cp></center>
 
       </footer>
     </div>
