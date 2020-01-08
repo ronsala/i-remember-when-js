@@ -25,9 +25,15 @@ class MemoriesController < ApplicationController
     @memory = Memory.find(params[:id])
   end
 
-  def update; end
+  def edit
+    @memory = Event.find(params[:id])
+  end
 
-  def destroy; end
+  def update
+    @memory = Memory.find(params[:id])
+    @memory.update(memory_params)
+    render 'show'
+  end
 
 protected
 
