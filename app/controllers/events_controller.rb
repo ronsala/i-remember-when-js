@@ -4,7 +4,6 @@
 class EventsController < ApplicationController
   def index
     @events = Event.all.sort_by(&:date)
-    render 'events/index'
   end
 
   def new; end
