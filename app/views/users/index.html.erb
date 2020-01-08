@@ -1,2 +1,10 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h1>Our Writers</h1>
+<p>Many thanks to all who have shared their memories. Contribute yours on our <%= link_to 'users Page', users_path %>.</p>
+
+<% if !@users.empty? %>
+ <% @users.each do |u| %>
+   <tr>
+     <td><%= link_to u.username, user_path(u) %></td>
+   </tr>
+ <% end %>
+<% end %>
