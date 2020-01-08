@@ -9,7 +9,7 @@
 <% end %><br>
 
 <% if !@events.empty? %>
- <% @events.each do |e| %>
+ <% @events.by_date.each do |e| %>
    <tr>
      <td><%= link_to e.name, event_path(e) %><%= format_date(e.date) %>, <%= e.country %><br><br></td>
    </tr>
