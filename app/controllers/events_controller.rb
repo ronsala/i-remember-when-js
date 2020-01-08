@@ -19,9 +19,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    # binding.pry
     @event = Event.find(params[:id])
-    render :show
   end
 
   def edit; end
