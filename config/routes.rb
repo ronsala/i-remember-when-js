@@ -12,14 +12,14 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
-  resources :users, only: %i[index show], shallow: true do
-    resources :events
-    resources :memories
-  end
-
-  resources :events, only: [:index] do
+  resources :events do
     resources :users, only: [:index]
     resources :memories, only: %i[index new create]
+  end
+  
+  resources :users, only: %i[index show], shallow: true do
+    resources :events, only: [:show]
+    resources :memories
   end
 
   resources :memories, only: [:index]

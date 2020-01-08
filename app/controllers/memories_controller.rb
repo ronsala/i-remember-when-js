@@ -3,7 +3,11 @@
 class MemoriesController < ApplicationController
   def index; end
 
-  def new; end
+  def new
+    @memory = Memory.new
+    # (user_id = current_user.id)
+    # event_id: params[:id],
+  end
 
   def create
     @memory = Memory.new(memory_params)
@@ -22,10 +26,6 @@ class MemoriesController < ApplicationController
   end
 
   def edit
-    @memory = Memory.find(params[:id])
-  end
-
-  def edit
     @memory = Event.find(params[:id])
   end
 
@@ -33,6 +33,13 @@ class MemoriesController < ApplicationController
     @memory = Memory.find(params[:id])
     @memory.update(memory_params)
     render 'show'
+  end
+
+  def destroy
+    @memory = Memory.find(params[:id])
+    event_id = @memory.event_id
+    memory.destroy
+    redirect_to "/events/<%= event_id %>"
   end
 
 protected

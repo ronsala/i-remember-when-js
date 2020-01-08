@@ -6,7 +6,9 @@ class EventsController < ApplicationController
     @events = Event.all
   end
 
-  def new; end
+  def new
+    @event = Event.new
+  end
 
   def create
     date = Date.new(*convert_date(event_params))
