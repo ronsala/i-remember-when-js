@@ -14,15 +14,15 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :users, only: [:index]
-    resources :memories, only: %i[index new create]
+    resources :memories #, only: %i[index new create edit]
   end
-  
+
   resources :users, only: %i[index show], shallow: true do
     resources :events, only: [:show]
     resources :memories
   end
 
-  resources :memories, only: [:index]
+  # resources :memories, only: [:index]
 
   devise_scope :user do
     delete 'sign_out', to: 'devise/sessions#destroy'
