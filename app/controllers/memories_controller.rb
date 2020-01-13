@@ -1,17 +1,22 @@
 # frozen_string_literal: true
 
 class MemoriesController < ApplicationController
-  def index; end
+  before_action :set_event
 
-  def new; end
+  def index
+    @memories = @event.memories
+  end
+
+  def new
+    @memory = @event.memories.build
+  end
 
   def create
-    @memory = Memory.new(memory_params)
-    @memory.event_id = params[:event_id]
+    @memory = @event.memories.build(memory_params)
     @memory.user_id = current_user.id
 
     if @memory.save
-      redirect_to @memory
+      redirect_to event_memory_path(@event, @memory)
     else
       render :new
     end
@@ -23,15 +28,29 @@ class MemoriesController < ApplicationController
 
   def edit
     @memory = Memory.find(params[:id])
+    @event = @memory.event
   end
 
-  def update; end
+  def update
+    @memory = Memory.find(params[:id])
+    @memory.update(memory_params)
+    render 'show'
+  end
 
-  def destroy; end
+  def destroy
+    @memory = Memory.find(params[:id])
+    event_id = @memory.event_id
+    memory.destroy
+    redirect_to "/events/<%= event_id %>"
+  end
 
-protected
+  protected
 
   def memory_params
     params.require(:memory).permit(:title, :body)
+  end
+
+  def set_event
+    @event = Event.find(params[:event_id])
   end
 end

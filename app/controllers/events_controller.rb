@@ -3,13 +3,14 @@
 # See https://guides.rubyonrails.org/action_controller_overview.html.
 class EventsController < ApplicationController
   def index
-    @events = Event.all.sort_by(&:date)
+    @events = Event.all
   end
 
-  def new; end
+  def new
+    @event = Event.new
+  end
 
   def create
-    # binding.pry
     date = Date.new(*convert_date(event_params))
     @event = Event.new(name: event_params[:name], country: event_params[:country], description: event_params[:description], user_id: current_user.id, date: date)
     if @event.save
@@ -20,14 +21,18 @@ class EventsController < ApplicationController
   end
 
   def show
-    # binding.pry
     @event = Event.find(params[:id])
-    render :show
   end
 
-  def edit; end
+  def edit
+    @event = Event.find(params[:id])
+  end
 
-  def update; end
+  def update
+    @event = Event.find(params[:id])
+    @event.update(event_params)
+    render 'show'
+  end
 
   def destroy; end
 
