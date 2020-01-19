@@ -3,9 +3,7 @@
 # For user account management.
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters, if: :devise_controller?
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :authenticate_user!
 
   # GET /users/sign_up
   def new
@@ -14,19 +12,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /users
   def create
-    @user = User.new(sign_up_params)
-    if @user.save
-      session[:user_id] = @user.id
-      redirect_to @user
-    else
-      render :new
-    end
+    super
   end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    super
+  end
 
   # PUT /resource
   # def update
