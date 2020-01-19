@@ -34,10 +34,6 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def authenticate
-    redirect_to new_user_session_path, alert: 'Please log in first' if current_user.nil?
-  end
-
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[username bio admin email])
     devise_parameter_sanitizer.permit(:account_update, keys: %i[username email bio admin])

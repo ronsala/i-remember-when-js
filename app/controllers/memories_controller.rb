@@ -29,7 +29,6 @@ class MemoriesController < ApplicationController
   end
 
   def edit
-    # @memory = Memory.find(params[:id])
   end
 
   def update
