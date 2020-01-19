@@ -10,7 +10,9 @@ RSpec.describe 'Registrations' do
 
   it 'signs user up' do
     post '/users', params: { user: { username: 'Renee', email: 'renee@example.com', password: '12345678', password_confirmation: '12345678', bio: 'It all started a long time ago....' } }
-    expect(response).to redirect_to user_path(1)
+    expect(response).to redirect_to root_path
+    follow_redirect!
+    expect(response.body).to include('Logged in as')
   end
 
   it "renders 'new' template if user not created" do
