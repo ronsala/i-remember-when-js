@@ -6,20 +6,24 @@ class Users::SessionsController < Devise::SessionsController
   skip_before_action :verify_signed_out_user
   # GET /users/sign_in
   def new
-    @user = User.new
+    # binding.pry
+    # @user = User.new
+    super
   end
 
   # POST /users/sign_in
   def create
-    @user = User.find_by(email: sign_in_params[:email])
-    if @user&.valid_password?(sign_in_params[:password])
-      #TODO
-      # session[:current_user] = current_user
-      session[:user_id] = @user.id
-      redirect_to @user
-    else
-      redirect_to user_session_path
-    end
+    # binding.pry
+    # @user = User.find_by(email: sign_in_params[:email])
+    # if @user&.valid_password?(sign_in_params[:password])
+    #   #TODO
+    #   # session[:current_user] = current_user
+    #   session[:user_id] = @user.id
+    #   redirect_to @user
+    # else
+    #   redirect_to user_session_path
+    # end
+    super
   end
 
   # DELETE users/sign_out

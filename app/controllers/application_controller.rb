@@ -38,9 +38,9 @@ class ApplicationController < ActionController::Base
     redirect_to new_user_session_path, alert: 'Please log in first' if current_user.nil?
   end
 
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-  end
+  # def current_user
+  #   @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  # end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[username bio admin email])
