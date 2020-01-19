@@ -6,8 +6,6 @@ class Users::SessionsController < Devise::SessionsController
   skip_before_action :verify_signed_out_user
   # GET /users/sign_in
   def new
-    # binding.pry
-    # @user = User.new
     super
   end
 
