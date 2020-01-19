@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :memories #, only: %i[index new create edit]
   end
 
-  resources :users, only: %i[index show], shallow: true do
+  resources :users, only: %i[index show edit update], shallow: true do
     resources :events, only: [:show]
     resources :memories
   end
