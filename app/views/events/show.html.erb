@@ -18,7 +18,7 @@
   <h2>Memories</h2>
   <% @event.memories.each do |m| %>
     <tr>
-      <td><%= link_to m.title, event_memory_path(@event, m) %></td>
+      <td><%= link_to m.title, memory_path(m) %></td>
     </tr>
   <% end %>
 <% end %>

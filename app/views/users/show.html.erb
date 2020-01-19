@@ -1,15 +1,11 @@
 <h2><%= @user.username %></h2>
 <p><strong>Bio: </strong><%= @user.bio %></p>
 
-<% if current_user %>
-  <p>Current user:<%= current_user %></p>
-<% end %>
-
 <% if current_user && current_user.id == @user.id%>
   <%= link_to 'Edit Your Account', edit_user_registration_path, method: :get %>
 <% end %><br>
 
 <% @user.memories.each do |memory| %>
-  <%= puts memory.title %>
-  <%= link_to memory.title, memory_path(memory.id) %>
+  <p><%= link_to memory.event.name, event_path(memory.event.id) %>: <%= puts memory.title %>
+  <%= link_to memory.title, event_memory_path(memory.event.id, memory.id) %></p>
 <% end %>

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class MemoriesController < ApplicationController
-  before_action :set_event, except: %i[show update]
+  before_action :set_event, except: %i[show edit update]
   before_action :set_memory, only: %i[show edit update destroy]
 
   def index
@@ -24,19 +24,17 @@ class MemoriesController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:event_id])
-    # @memory = Memory.find(params[:id])
+    @memory = Memory.find(params[:id])
+    render :show
   end
 
-  def edit
-    # @memory = Memory.find(params[:id])
-  end
+  def edit;end
 
   def update
     if @memory.update(memory_params)
-      redirect_to event_memory_path(@memory)
+      redirect_to memory_path(@memory)
     else
-      render 'edit'
+      render :edit
     end
   end
 
@@ -54,7 +52,6 @@ class MemoriesController < ApplicationController
   end
 
   def set_event
-    # binding.pry
     @event = Event.find(params[:event_id])
   end
 
