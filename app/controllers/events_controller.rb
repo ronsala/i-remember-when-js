@@ -11,7 +11,9 @@ class EventsController < ApplicationController
   end
 
   def create
-    date = Date.new(*convert_date(event_params))
+    if Event.date_present?(event_params)
+      date = Date.new(*Event.convert_date(event_params))
+    end
     @event = Event.new(name: event_params[:name], country: event_params[:country], description: event_params[:description], user_id: current_user.id, date: date)
     if @event.save
       redirect_to @event
@@ -41,10 +43,5 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:name, :'date(3i)', :'date(2i)', :'date(1i)', :country, :description)
-  end
-
-  # Converts date hash in event_params to Date object.
-  def convert_date(hash)
-    %w[1 2 3].map { |element| hash["date(#{element}i)"].to_i }
   end
 end
