@@ -1,2 +1,5 @@
-<h1>Memories#index</h1>
-<p>Find me in app/views/memories/index.html.erb</p>
+<h1><%= @user.username %>'s Memories</h1>
+<% @user.memories.each do |memory| %>
+  <p><%= link_to memory.event.name, event_path(memory.event.id) %>: <%= puts memory.title %>
+  <%= link_to memory.title, event_memory_path(memory.event.id, memory.id) %></p>
+<% end %>

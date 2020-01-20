@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class MemoriesController < ApplicationController
-  before_action :set_event, except: %i[show edit update]
+  before_action :set_event, except: %i[index show edit update]
   before_action :set_memory, only: %i[show edit update destroy]
 
   def index
-    @memories = @event.memories
+    @user = User.find(params[:user_id])
+    @memories = @user.memories
   end
 
   def new
