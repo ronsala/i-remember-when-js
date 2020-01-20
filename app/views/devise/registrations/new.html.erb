@@ -28,7 +28,15 @@
 
   <div class="field">
     <%= f.label :bio %><br />
-    <%= f.text_field :bio, autocomplete: "bio" %>
+    <%= f.text_area :bio, size: "125x8", autocomplete: "bio" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :admin_key_if_any %><br />
+    <p><input type="text" name="admin_key"></p>
+    <% if flash[:admin_mismatch] %>
+      <p><strong><%= flash[:admin_mismatch] %></strong></p><br>
+    <% end %>
   </div>
 
   <div class="actions">
@@ -36,6 +44,5 @@
   </div>
 <% end %>
 <br>
-<h3>Or</h3>
 
-<%= link_to "Sign Up with Google", user_google_oauth2_omniauth_authorize_path %>
+<%= button_to "Sign Up with Google", user_google_oauth2_omniauth_authorize_path %>

@@ -15,6 +15,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /users
   def create
     super
+    check_admin_key
   end
 
   # GET /resource/edit
@@ -54,6 +55,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up.
   def after_sign_up_path_for(user)
     super(user)
+  end
+
+  def check_admin_key
+    if params[:admin_key] != ""
+      if params[:admin_key] == ENV["ADMIN_KEY"]
+        @user.admin = true
+        @user.save
+        flash[:notice] = "Admin account established!"
+      else
+        flash[:alert] = "Admin key not recognized. Please update account to have admin status."
+      end
+    end
   end
 
   # The path used after sign up for inactive accounts.
