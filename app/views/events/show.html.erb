@@ -3,15 +3,15 @@
 <p><%= @event.description %></p>
 
 <% if current_user %>
-  <%= button_to 'Edit This Event', edit_event_path(@event), method: :get %>
+  <%= link_to 'Edit This Event', edit_event_path(@event), method: :get %>
 <% else %>
-  <%= button_to 'Edit This Event', new_user_session_path %>
+  <%= link_to 'Edit This Event', new_user_session_path %>
 <% end %><br>
 
 <% if current_user %>
-  <%= button_to 'Add Your Memory of This Event', new_event_memory_path(@event), method: :get %>
+  <%= link_to 'Add Your Memory of This Event', new_event_memory_path(@event), method: :get %>
 <% else %>
-  <%= button_to 'Add a Memory of This Event', new_user_session_path %>
+  <%= link_to 'Add a Memory of This Event', new_user_session_path %>
 <% end %><br>
 
 <% if !@event&.memories.empty? %>
