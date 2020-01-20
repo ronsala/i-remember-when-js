@@ -89,11 +89,16 @@ Specs:
   users/:id/memories
 
 - [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
-- [ ] Include form display of validation errors (form URL e.g. /recipes/new)
+- [x] Include form display of validation errors (form URL e.g. /recipes/new)
+
+  /events/new
+  /events/:id/edit
+  /events/:id/memories/new
+  /events/:id/memories/:id/edit
 
 Confirm:
 
 - [ ] The application is pretty DRY
 - [ ] Limited logic in controllers
 - [ ] Views use helper methods if appropriate
-- [ ] Views use partials if appropriate
+- [X] Views use partials if appropriate
