@@ -2,9 +2,19 @@
 <p>Many thanks to all who have shared their memories. Contribute yours on our <%= link_to 'users Page', users_path %>.</p>
 
 <% if !@users.empty? %>
- <% @users.each do |u| %>
-   <tr>
-     <td><%= link_to u.username, user_path(u) %></td>
-   </tr>
- <% end %>
+  <table>
+    <thead>
+      <tr>
+      <th colspan="3"></th>
+      </tr>
+    </thead>
+      <tbody>
+    <% @users.each do |u| %>
+      <tr>
+        <td><%= link_to u.username, user_path(u) %></td>
+        <td><%= link_to "View Memories", user_memories_path(u) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 <% end %>

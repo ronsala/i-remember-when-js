@@ -16,6 +16,7 @@ class EventsController < ApplicationController
     end
     @event = Event.new(name: event_params[:name], country: event_params[:country], description: event_params[:description], user_id: current_user.id, date: date)
     if @event.save
+      flash[:notice] = "#{@event.name} created!"
       redirect_to @event
     else
       flash[:error] = @event.errors.full_messages.join(' | ')
@@ -34,10 +35,15 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     @event.update(event_params)
+    flash[:notice] = "#{@event.name} updated!"
     render 'show'
   end
 
-  def destroy; end
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    flash[:notice] = "#{@event.name} deleted!"
+  end
 
   protected
 
