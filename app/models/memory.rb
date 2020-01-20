@@ -6,6 +6,4 @@ class Memory < ApplicationRecord
 
   validates :title, presence: true
   validates :body, presence: true
-
-  scope :most_recent, ->(limit) { order('created_at desc').limit(limit) }
 end
