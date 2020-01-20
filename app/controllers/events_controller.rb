@@ -2,6 +2,9 @@
 
 # See https://guides.rubyonrails.org/action_controller_overview.html.
 class EventsController < ApplicationController
+  before_action :authenticate_user!, only: %i[new create edit update]
+  before_action :admin?, only: [:destroy]
+
   def index
     @events = Event.all
   end
@@ -43,11 +46,16 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event.destroy
     flash[:notice] = "#{@event.name} deleted!"
+    redirect_to events_path
   end
 
   protected
 
   def event_params
     params.require(:event).permit(:name, :'date(3i)', :'date(2i)', :'date(1i)', :country, :description)
+  end
+
+  def admin?
+    current_user.admin?
   end
 end
