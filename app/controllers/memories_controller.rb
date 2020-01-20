@@ -2,6 +2,11 @@
 
 class MemoriesController < ApplicationController
   before_action :set_memory, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: %i[new create edit update]
+  before_action only: %i[edit update destroy] do
+    memory = @memory
+    authorized?(memory)
+  end
 
   def index
     @user = User.find(params[:user_id])
@@ -50,6 +55,13 @@ class MemoriesController < ApplicationController
   end
 
   protected
+
+  def authorized?(memory)
+    if memory.user != current_user && !current_user.admin
+      flash[:alert] = "You don't have permission to perform this action."
+      redirect_to root_path
+    end
+  end
 
   def memory_params
     params.require(:memory).permit(:title, :body, :event_id)
