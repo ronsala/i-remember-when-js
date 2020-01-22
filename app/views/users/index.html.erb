@@ -1,5 +1,6 @@
 <h1>Our Writers</h1>
 <p>Many thanks to all who have shared their memories. Contribute yours on our <%= link_to 'users Page', users_path %>.</p>
+<p><em>* indicates site admin</em></p>
 
 <% if !@users.empty? %>
   <table>
@@ -11,7 +12,7 @@
       <tbody>
     <% @users.each do |u| %>
       <tr>
-        <td><%= link_to u.username, user_path(u) %></td>
+        <td><%= link_to u.username, user_path(u) %><% if u.admin %> *<% end %></td>
         <td><%= link_to "View Memories", user_memories_path(u) %></td>
       </tr>
     <% end %>
