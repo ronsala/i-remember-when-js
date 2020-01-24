@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
 class MemoriesController < ApplicationController
+  before_action :set_event, only: %i[new create]
   before_action :set_memory, only: %i[show edit update destroy]
-  before_action :authenticate_user!, only: %i[new create edit update]
-  before_action only: %i[edit update destroy] do
-    memory = @memory
-    authorized?(memory)
-  end
+  before_action :authenticate_user!, only: %i[new create]
+  before_action :authorized?, only: %i[edit update destroy]
+
 
   def index
     @user = User.find(params[:user_id])
@@ -14,15 +13,12 @@ class MemoriesController < ApplicationController
   end
 
   def new
-    @event = Event.find(params[:event_id])
     @memory = @event.memories.build
   end
 
   def create
-    @event = Event.find(params[:event_id])
     @memory = @event.memories.build(memory_params)
     @memory.user_id = current_user.id
-
     if @memory.save
       flash[:notice] = "#{@memory.title} created!"
       redirect_to event_memory_path(@event, @memory)
@@ -32,9 +28,7 @@ class MemoriesController < ApplicationController
     end
   end
 
-  def show
-    render :show
-  end
+  def show; end
 
   def edit; end
 
@@ -56,15 +50,19 @@ class MemoriesController < ApplicationController
 
   protected
 
-  def authorized?(memory)
-    if memory.user != current_user && !current_user.admin
-      flash[:alert] = "You don't have permission to perform this action."
-      redirect_to root_path
-    end
+  def authorized?
+    return unless @memory.user_id != current_user.id && !current_user.admin
+
+    flash[:alert] = "You don't have permission to perform this action."
+    redirect_to root_path
   end
 
   def memory_params
     params.require(:memory).permit(:title, :body, :event_id)
+  end
+
+  def set_event
+    @event = Event.find(params[:event_id])
   end
 
   def set_memory
