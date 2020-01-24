@@ -12,11 +12,9 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
-  resources :memories
-
   resources :events do
     resources :users, only: [:index]
-    resources :memories #, only: %i[index new create edit]
+    resources :memories
   end
 
   resources :users, only: %i[index show edit update], shallow: true do

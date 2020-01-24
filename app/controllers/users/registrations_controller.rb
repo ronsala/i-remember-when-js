@@ -2,10 +2,7 @@
 
 # For user account management.
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
   before_action :authenticate_user!, only: %i[edit update destroy]
-
 
   # GET /users/sign_up
   def new
@@ -25,14 +22,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    # @user = User.find_by(username: current_user.username)
-    # binding.pry
-    # if @user.update(email:
-    #   account_update_params[:email])
-    #   redirect_to @user
-    # else
-    #   render 'edit'
-    # end
     super
   end
 
@@ -41,7 +30,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  # GET /resource/cancel
+    # GET /resource/cancel
   # Forces the session data which is usually expired after sign
   # in to be expired now. This is useful if the user wants to
   # cancel oauth signing in/up in the middle of the process,
@@ -68,9 +57,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
     end
   end
-
-  # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
-  # end
 end
