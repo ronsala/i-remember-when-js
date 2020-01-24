@@ -15,9 +15,17 @@
 
 <% if !@event&.memories.empty? %>
   <h2>Memories</h2>
-  <% @event.memories.each do |m| %>
-    <tr>
-      <td><%= link_to m.title, memory_path(m) %></td>
-    </tr>
-  <% end %>
+  <table>
+    <thead>
+      <th>Title</th><th>Writer</th>
+    </thead>
+    <tbody>
+      <% @event.memories.each do |m| %>
+        <tr>
+          <td><%= link_to m.title, memory_path(m) %></td>
+          <td><%= link_to m.user.username, user_path(m.user)  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>
