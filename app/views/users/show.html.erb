@@ -5,7 +5,4 @@
   <%= link_to 'Edit Your Account', edit_user_registration_path, method: :get %>
 <% end %><br>
 
-<% @user.memories.each do |memory| %>
-  <p><%= link_to memory.event.name, event_path(memory.event.id) %>: <%= puts memory.title %>
-  <%= link_to memory.title, event_memory_path(memory.event.id, memory.id) %></p>
-<% end %>
+<%= link_to 'See Memories', user_memories_path(@user) %>

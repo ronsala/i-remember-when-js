@@ -13,14 +13,14 @@ Rails.application.routes.draw do
   }
 
   resources :events do
-    resources :users, only: [:index]
-    resources :memories
+    resources :memories, only: %i[new create]
   end
 
   resources :users, only: %i[index show edit update], shallow: true do
-    resources :events, only: [:show]
-    resources :memories
+    resources :memories, only: %i[index]
   end
+
+  resources :memories, only: %i[show edit update destroy]
 
   devise_scope :user do
     delete 'sign_out', to: 'devise/sessions#destroy'
