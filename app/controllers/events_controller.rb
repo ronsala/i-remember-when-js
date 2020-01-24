@@ -15,9 +15,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    if Event.date_present?(event_params)
-      date = Date.new(*Event.convert_date(event_params))
-    end
+    date = Date.new(*Event.convert_date(event_params)) if Event.date_present?(event_params)
     @event = Event.new(name: event_params[:name], country: event_params[:country], description: event_params[:description], user_id: current_user.id, date: date)
     if @event.save
       flash[:notice] = "#{@event.name} created!"
