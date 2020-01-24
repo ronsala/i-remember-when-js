@@ -41,11 +41,11 @@
         </li>
           <% if !current_user.admin? %>
             <li class="nav-item">
-              <a class="nav-link" <%= link_to current_user.username, user_path(current_user) %></a>
+              <a class="nav-link" <%= link_to current_user.email, user_path(current_user) %></a>
             </li>
           <% else %>
             <li class="nav-item">
-              <a class="nav-link" href="/users/<%= current_user.id %>"><%= current_user.username %> [admin]</a>
+              <a class="nav-link" href="/users/<%= current_user.id %>"><%= current_user.email %> [admin]</a>
             </li>
           <% end %>
       <% end %>
