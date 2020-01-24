@@ -1,27 +1,17 @@
 <h1><%= @event.name %></h1>
 <p><%= @event.country %>, <%= format_date(@event.date) %></p>
 <p>Created by <%= link_to @creator.username, user_path(@creator) %></p>
-<p><%= @event.description %></p>
-
-<% if current_user %>
-  <%= link_to 'Edit This Event', edit_event_path(@event), method: :get %>
-<% else %>
-  <%= link_to 'Edit This Event', new_user_session_path %>
-<% end %><br>
+<p>Summary: <%= @event.description %></p>
 
 <% if current_user %>
   <%= link_to 'Add Your Memory of This Event', new_event_memory_path(@event), method: :get %>
+  <% if current_user.id == @creator.id || current_user.admin? %>
+    <%= link_to 'Edit', edit_event_path(@event), method: :get %>
+    <%= link_to 'Delete', event_path(@event), method: :delete %>
+  <% end %><br>
 <% else %>
   <%= link_to 'Add a Memory of This Event', new_user_session_path %>
 <% end %><br>
-
-<% if current_user.admin %>
-  <%= link_to 'Delete This Event', event_path(@event), method: :delete %>
-<% else %>
-  <%= link_to 'Add a Memory of This Event', new_user_session_path %>
-<% end %><br>
-
-
 
 <% if !@event&.memories.empty? %>
   <h2>Memories</h2>

@@ -2,8 +2,12 @@
 
 # See https://guides.rubyonrails.org/action_controller_overview.html.
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create edit update]
-  before_action :admin?, only: [:destroy]
+  before_action :set_event, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: %i[new create]
+  before_action only: %i[edit update destroy] do
+    event = @event
+    authorized?(event)
+  end
 
   def index
     @events = Event.all
@@ -28,31 +32,37 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
     @creator = User.find(@event.user_id)
   end
 
-  def edit
-    @event = Event.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @event = Event.find(params[:id])
     @event.update(event_params)
     flash[:notice] = "#{@event.name} updated!"
-    render 'show'
+    redirect_to event_path(@event)
   end
 
   def destroy
-    @event = Event.find(params[:id])
     @event.destroy
     flash[:notice] = "#{@event.name} deleted!"
-    redirect_to events_path
+    redirect_to '/events'
   end
 
   protected
 
+  def authorized?(event)
+    if event.user_id != current_user.id && !current_user.admin
+      flash[:alert] = "You don't have permission to perform this action."
+      redirect_to root_path
+    end
+  end
+
   def event_params
     params.require(:event).permit(:name, :'date(3i)', :'date(2i)', :'date(1i)', :country, :description)
+  end
+
+  def set_event
+    @event = Event.find(params[:id])
   end
 end
