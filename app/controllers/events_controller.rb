@@ -54,8 +54,4 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:name, :'date(3i)', :'date(2i)', :'date(1i)', :country, :description)
   end
-
-  def admin?
-    current_user.admin?
-  end
 end

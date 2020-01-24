@@ -15,9 +15,6 @@
       <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
       <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
       <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
-      <% if current_user %>
-        <p>Logged in as <a href='/users/<%= current_user.id %>'><%= current_user.username %></a></p>
-      <% end %>
       <ul class="nav justify-content-end">
         <li class="nav-item">
           <a class="nav-link" <%= link_to 'Home', root_path %></a>
@@ -38,14 +35,22 @@
         <li class="nav-item">
           <a class="nav-link" <%= link_to 'Sign Up', new_user_registration_path %></a>
         </li>
-      <% end %>
-      <% if current_user %>
+      <% else %>
         <li class="nav-item">
           <a class="nav-link" <%= link_to 'Sign Out', destroy_user_session_path %></a>
         </li>
+          <% if !current_user.admin? %>
+            <li class="nav-item">
+              <a class="nav-link" <%= link_to current_user.username, user_path(current_user) %></a>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <a class="nav-link" href="/users/<%= current_user.id %>"><%= current_user.username %> [admin]</a>
+            </li>
+          <% end %>
       <% end %>
       </ul>
-      <%= yield %>
+        <%= yield %>
       <footer id="footer">
 
       <center><p>©2019 Ron Sala<a href=mailto:ron.sala@gmail.com> Contact </a>|<a <%= link_to ' Privacy', privacy_path %></a></cp></center>
