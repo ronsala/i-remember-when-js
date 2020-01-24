@@ -17,6 +17,6 @@ RSpec.describe 'Creating account with username and password', type: :feature do
     fill_in 'Retype Password', with: '12345678'
     fill_in 'Bio', with: 'From bewilderment to enlightenment.'
     click_button 'Sign Up'
-    expect(page).to have_text 'John'
+    expect(page).to have_text 'john@example.com'
   end
 end
