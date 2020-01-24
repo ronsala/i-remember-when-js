@@ -101,4 +101,9 @@ Confirm:
 - [x] The application is pretty DRY
 - [x] Limited logic in controllers
 - [x] Views use helper methods if appropriate
+
+  #format_date
+
 - [X] Views use partials if appropriate
+
+  views/events/_form

@@ -6,7 +6,6 @@ class MemoriesController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
   before_action :authorized?, only: %i[edit update destroy]
 
-
   def index
     @user = User.find(params[:user_id])
     @memories = @user.memories
