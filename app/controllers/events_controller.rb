@@ -2,12 +2,9 @@
 
 # See https://guides.rubyonrails.org/action_controller_overview.html.
 class EventsController < ApplicationController
-  before_action :set_event, only: %i[show edit update destroy]
+  before_action :set_event, only: %i[show edit update destroy authorized?]
   before_action :authenticate_user!, only: %i[new create]
-  before_action only: %i[edit update destroy] do
-    event = @event
-    authorized?(event)
-  end
+  before_action :authorized?, only: %i[edit update destroy]
 
   def index
     @events = Event.all
@@ -51,11 +48,11 @@ class EventsController < ApplicationController
 
   protected
 
-  def authorized?(event)
-    if event.user_id != current_user.id && !current_user.admin
-      flash[:alert] = "You don't have permission to perform this action."
-      redirect_to root_path
-    end
+  def authorized?
+    return unless @event.user_id != current_user.id && !current_user.admin
+
+    flash[:alert] = "You don't have permission to perform this action."
+    redirect_to root_path
   end
 
   def event_params
