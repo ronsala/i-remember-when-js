@@ -6,7 +6,6 @@ class MemoriesController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
   before_action :authorized?, only: %i[edit update destroy]
 
-
   def index
     @user = User.find(params[:user_id])
     @memories = @user.memories
@@ -21,7 +20,7 @@ class MemoriesController < ApplicationController
     @memory.user_id = current_user.id
     if @memory.save
       flash[:notice] = "#{@memory.title} created!"
-      redirect_to event_memory_path(@event, @memory)
+      redirect_to memory_path(@memory)
     else
       flash[:error] = @memory.errors.full_messages.join(' | ')
       redirect_to new_event_memory_path(@event)

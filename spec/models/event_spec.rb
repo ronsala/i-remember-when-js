@@ -47,12 +47,7 @@ RSpec.describe Event, type: :model do
   end
 
   it 'validates year selected' do
-    expect(Event.create(
-      name: 'The Big Event',
-      country: 'United States',
-      date: 'Select',
-      description: 'It was that big.'
-    )).not_to be_valid
+    expect(Event.create(name: 'The Big Event', country: 'United States', date: 'Select', description: 'It was that big.')).not_to be_valid
   end
 
   it 'has many memories' do

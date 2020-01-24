@@ -30,7 +30,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-    # GET /resource/cancel
+  # GET /resource/cancel
   # Forces the session data which is usually expired after sign
   # in to be expired now. This is useful if the user wants to
   # cancel oauth signing in/up in the middle of the process,
@@ -47,14 +47,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def check_admin_key
-    if params[:admin_key] != ""
-      if params[:admin_key] == ENV["ADMIN_KEY"]
-        @user.admin = true
-        @user.save
-        flash[:notice] = "Admin account established!"
-      else
-        flash[:alert] = "Admin key not recognized. Please update account to have admin status."
-      end
+    return unless params[:admin_key] != ''
+
+    if params[:admin_key] == ENV['ADMIN_KEY']
+      @user.admin = true
+      @user.save
+      flash[:notice] = 'Admin account established!'
+    else
+      flash[:alert] = 'Admin key not recognized. Please update account to have admin status.'
     end
   end
 end
