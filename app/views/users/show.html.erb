@@ -1,8 +1,8 @@
 <h2><%= @user.username %><% if @user.admin? %> [admin]<% end%></h2>
-<p><strong>Bio: </strong><%= @user.bio %></p>
+<p><strong>Bio: </strong><%= @user.bio %><% if current_user == @user && (@user.bio.nil? || @user&.bio&.empty?) %><%= link_to "[Add Bio]", edit_user_registration_path %><% end %></p>
 
-<% if current_user && current_user.id == @user.id%>
+<% if current_user == @user %>
   <%= link_to 'Edit Your Account', edit_user_registration_path, method: :get %>
 <% end %><br>
 
-<%= link_to 'See Memories', user_memories_path(@user) %>
+<%= link_to 'See Memories', user_memories_path(@user) if !@user.memories.empty? %>
