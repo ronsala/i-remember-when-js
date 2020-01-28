@@ -10,7 +10,8 @@ RSpec.describe 'Registrations' do
 
   it 'signs user up' do
     post '/users', params: { user: { username: 'Renee', email: 'renee@example.com', password: '12345678', password_confirmation: '12345678', bio: 'It all started a long time ago....' } }
-    expect(response).to redirect_to root_path
+    user = User.last
+    expect(response).to redirect_to user_path(user)
     follow_redirect!
     expect(response.body).to include('renee@example.com')
   end

@@ -13,6 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     check_admin_key
+
   end
 
   # GET /resource/edit
@@ -43,7 +44,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(user)
-    super(user)
+    user_path(user)
   end
 
   def check_admin_key
