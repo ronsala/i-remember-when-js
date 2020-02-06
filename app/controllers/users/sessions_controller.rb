@@ -17,6 +17,7 @@ class Users::SessionsController < Devise::SessionsController
   # DELETE users/sign_out
   def destroy
     session.clear
+    flash[:success] = "You have successfully signed out!"
     redirect_to '/'
   end
 

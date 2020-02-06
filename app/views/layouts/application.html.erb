@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <title>I Remember When</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,10 +15,12 @@
 
   <body>
     <div class="container">
-      <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
-      <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
-      <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
-      <ul class="nav justify-content-end">
+      <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %>">
+          <%= value %>
+        </div>
+      <% end %>
+      <ul nav class="nav justify-content-end">
         <li class="nav-item">
           <a class="nav-link" <%= link_to 'Home', root_path %></a>
         </li>
@@ -49,7 +54,7 @@
             </li>
           <% end %>
       <% end %>
-      </ul>
+      </ul><br>
         <%= yield %>
       <footer id="footer">
 
