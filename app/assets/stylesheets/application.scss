@@ -8,7 +8,7 @@
   justify-content: flex-end;
   align-items: stretch;
   align-content: flex-end;
-  background-color: transparentize($color: tan, $amount: .6);
+  background-color: transparentize($color: tan, $amount: .8);
 }
 
 h1, h2, h3 {
@@ -17,6 +17,7 @@ h1, h2, h3 {
 
 img {
   max-width: 100%;
+  border: 3px solid black;
 }
 
 p {
