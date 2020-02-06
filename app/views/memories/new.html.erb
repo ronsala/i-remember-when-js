@@ -1,4 +1,4 @@
-<h1>Create a Memory</h1>
+<h1>Create a Memory of <%= @memory.event.name %></h1>
 <br>
 <%= form_with scope: :memory, url: event_memories_path do |f| %>
   <p><%= f.label :title %>: <%= f.text_field :title %></p><br>
