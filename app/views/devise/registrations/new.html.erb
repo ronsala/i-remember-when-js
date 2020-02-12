@@ -6,12 +6,12 @@
   <div class="field">
     <%= f.label :username %><br />
     <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
-  </div>
+  </div><br>
 
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  </div><br>
 
   <div class="field">
     <%= f.label :password %>
@@ -19,17 +19,17 @@
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+  </div><br>
 
   <div class="field">
     <%= f.label :password_confirmation, 'Retype Password' %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+  </div><br>
 
   <div class="field">
     <%= f.label :bio %><br />
     <%= f.text_area :bio, size: "125x8", autocomplete: "bio" %>
-  </div>
+  </div><br>
 
   <div class="field">
     <%= f.label :admin_key_if_any %><br />
@@ -37,12 +37,12 @@
     <% if flash[:admin_mismatch] %>
       <p><strong><%= flash[:admin_mismatch] %></strong></p><br>
     <% end %>
-  </div>
+  </div><br>
 
   <div class="actions">
-    <%= f.submit "Sign Up" %>
+    <%= f.submit "Sign Up", class: "btn btn-outline-dark btn-sm" %>
   </div>
 <% end %>
 <br>
-
-<%= button_to "Sign Up with Google", user_google_oauth2_omniauth_authorize_path %>
+<p>or</p>
+<%= link_to 'Sign Up With Google', user_google_oauth2_omniauth_authorize_path, class: "btn btn-outline-dark btn-sm" %>

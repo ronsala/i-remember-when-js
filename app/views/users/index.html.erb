@@ -1,15 +1,10 @@
 <center>
 <h1>Our Writers</h1>
-<p>Many thanks to all who have added event and shared their memories. To contribute yours, go to our <%= link_to 'Events', events_path %> page.</p>
+<p>Many thanks to all who have added event and shared their memories. To contribute, go to our <%= link_to 'Events', events_path %> page.</p>
 
   <% if !@users.empty? %>
     <p><em>(* Indicates site admin.)</em></p>
     <table>
-      <thead>
-        <tr>
-        <th colspan="2"></th>
-        </tr>
-      </thead>
         <tbody>
       <% @users.each do |u| %>
         <tr>

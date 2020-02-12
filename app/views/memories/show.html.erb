@@ -4,5 +4,5 @@
 <p><%= @memory.body %>
 
 <% if @memory.user.id == current_user.id %>
-  <p><%= link_to 'Edit', edit_memory_path(@memory) %> <%= link_to 'Delete', memory_path(@memory), method: :delete %><p>
+  <p><%= link_to 'Edit', edit_memory_path(@memory), class: "btn btn-outline-dark btn-sm" %> <%= link_to 'Delete', memory_path(@memory), method: :delete, class: "btn btn-outline-dark btn-sm" %><p>
 <% end %>
