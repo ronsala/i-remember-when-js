@@ -4,6 +4,10 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
+* {
+  border-radius: 0 !important;
+}
+
 .container {
   display: flex;
   flex-direction: column;
