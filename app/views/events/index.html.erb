@@ -3,9 +3,9 @@
 <p>Find events of historical interest to read about or add your own.</p>
 
 <% if current_user %>
-  <%= button_to 'Add Event', new_event_path, method: :get %>
+  <%= link_to 'Add Event', new_event_path, method: :get, class: "btn btn-outline-dark btn-sm" %>
 <% else %>
-  <%= button_to 'Add Event', new_user_session_path %>
+  <%= link_to 'Add Event', new_user_session_path, class: "btn btn-outline-dark btn-sm" %>
 <% end %><br>
 
 <table>

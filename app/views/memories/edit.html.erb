@@ -4,5 +4,5 @@
   <p><%= f.label :title %>: <%= f.text_field :title %></p><br>
   <p><%= f.label :"Your Memory" %>:<br><em>Recollections of the event from your point of view.</em><br>
   <%= f.text_area(:body, size: "125x8") %></p>
-  <p><%= f.submit :Submit %></p>
+  <p><%= f.submit :Submit, class: "btn btn-outline-dark btn-sm" %></p>
 <% end %>

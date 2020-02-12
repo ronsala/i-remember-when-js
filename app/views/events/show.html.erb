@@ -5,13 +5,13 @@
 <p>Summary: <%= @event.description %></p>
 
 <% if current_user %>
-  <%= link_to 'Add Your Memory of This Event', new_event_memory_path(@event), method: :get %>
+  <%= link_to 'Add Memory', new_event_memory_path(@event), method: :get, class: "btn btn-outline-dark btn-sm" %>
   <% if current_user.id == @creator.id || current_user.admin? %>
-    <%= link_to 'Edit', edit_event_path(@event), method: :get %>
-    <%= link_to 'Delete', event_path(@event), method: :delete %>
+    <%= link_to 'Edit', edit_event_path(@event), method: :get, class: "btn btn-outline-dark btn-sm" %>
+    <%= link_to 'Delete', event_path(@event), method: :delete, class: "btn btn-outline-dark btn-sm" %>
   <% end %><br>
 <% else %>
-  <%= link_to 'Add a Memory of This Event', new_user_session_path %>
+  <%= link_to 'Add Memory', new_user_session_path, , class: "btn btn-outline-dark btn-sm" %>
 <% end %><br>
 
 <% if !@event&.memories.empty? %>
