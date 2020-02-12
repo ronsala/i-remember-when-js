@@ -11,7 +11,7 @@
     <%= link_to 'Delete', event_path(@event), method: :delete, class: "btn btn-outline-dark btn-sm" %>
   <% end %><br>
 <% else %>
-  <%= link_to 'Add Memory', new_user_session_path, , class: "btn btn-outline-dark btn-sm" %>
+  <%= link_to 'Add Memory', new_user_session_path, class: "btn btn-outline-dark btn-sm" %>
 <% end %><br>
 
 <% if !@event&.memories.empty? %>

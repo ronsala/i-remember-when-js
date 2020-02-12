@@ -14,7 +14,6 @@
   </head>
 
   <body>
-    <center>
       <div class="container">
         <% flash.each do |key, value| %>
           <div class="<%= flash_class(key) %>">
@@ -57,10 +56,10 @@
         <% end %>
         </ul><br>
           <%= yield %>
+
         <footer id="footer">
           ©2020 Ron Sala<a href=mailto:ron.sala@gmail.com> Contact </a>|<a <%= link_to ' Privacy', privacy_path %></a>
         </footer>
       </div>
     </body>
-  </center>
 </html>

@@ -1,23 +1,24 @@
-<h1>Events</h1>
+<center>
+  <h1>Events</h1>
 
-<p>Find events of historical interest to read about or add your own.</p>
+  <p>Find events of historical interest to read about or add your own.</p>
 
-<% if current_user %>
-  <%= link_to 'Add Event', new_event_path, method: :get, class: "btn btn-outline-dark btn-sm" %>
-<% else %>
-  <%= link_to 'Add Event', new_user_session_path, class: "btn btn-outline-dark btn-sm" %>
-<% end %><br>
+  <% if current_user %>
+    <%= link_to 'Add Event', new_event_path, method: :get, class: "btn btn-outline-dark btn-sm" %>
+  <% else %>
+    <%= link_to 'Add Event', new_user_session_path, class: "btn btn-outline-dark btn-sm" %>
+  <% end %><br>
 
-<table>
-
-<% if !@events.empty? %>
-  <thead>
-    <th>Event</th><th>Date</th><th>Country</th>
-  </thead>
-    <% @events.by_date.each do |e| %>
-      <tr>
-        <td><%= link_to e.name, event_path(e) %></td><td><%= format_date(e.date) %></td><td><%= e.country %></td>
-      </tr>
-    <% end %>
-<% end %>
-</table>
+  <table>
+  <% if !@events.empty? %>
+    <thead>
+      <th>Event</th><th>Date</th><th>Country</th>
+    </thead>
+      <% @events.by_date.each do |e| %>
+        <tr>
+          <td><%= link_to e.name, event_path(e) %></td><td><%= format_date(e.date) %></td><td><%= e.country %></td>
+        </tr>
+      <% end %>
+  <% end %>
+  </table>
+</center>

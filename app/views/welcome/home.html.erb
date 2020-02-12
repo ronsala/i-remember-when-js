@@ -1,11 +1,13 @@
-<h1>I Remember When...</h1>
-<h3><em>Crowdsourcing first-hand history</em></h3>
-<%= image_tag("March on Washington from USMC-09611") %>
-<br>
-<p>The events of history shape our lives and our world. <em>I Remember When</em> is for people like you to share memories of events of historical importance within our time.</p>
+<center>
+  <h1>I Remember When...</h1>
+  <h3><em>Crowdsourcing first-hand history</em></h3>
+  <%= image_tag("March on Washington from USMC-09611") %>
+  <br>
+  <p>The events of history shape our lives and our world. <em>I Remember When</em> is for people like you to share memories of events of historical importance within our time.</p>
 
-<h5>Newly Added Memories:</h5>
-<% @new_memories.each do |new_memory| %>
-  <p><%= link_to new_memory.event.name, event_path(new_memory.event) %> (<%= format_date(new_memory.event.date) %>):
-  <%= link_to new_memory.title, memory_path(new_memory) %></p>
-<% end %>
+  <h5>Newly Added Memories:</h5>
+  <% @new_memories.each do |new_memory| %>
+    <p><%= link_to new_memory.event.name, event_path(new_memory.event) %> (<%= format_date(new_memory.event.date) %>):
+    <%= link_to new_memory.title, memory_path(new_memory) %></p>
+  <% end %>
+</center>
