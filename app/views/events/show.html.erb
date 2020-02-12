@@ -1,8 +1,8 @@
 <center>
 <h1><%= @event.name %></h1>
-<p><%= @event.country %>, <%= format_date(@event.date) %></p>
-<p>Created by <%= link_to @creator.username, user_path(@creator) %></p>
-<p>Summary: <%= @event.description %></p>
+<h4><%= @event.country %>, <%= format_date(@event.date) %></h4>
+<h5>Created by <%= link_to @creator.username, user_path(@creator) %></h5>
+<p><strong>Summary: </strong><%= @event.description %></p>
 
 <% if current_user %>
   <%= link_to 'Add Memory', new_event_memory_path(@event), method: :get, class: "btn btn-outline-dark btn-sm" %>
@@ -11,11 +11,11 @@
     <%= link_to 'Delete', event_path(@event), method: :delete, class: "btn btn-outline-dark btn-sm" %>
   <% end %><br>
 <% else %>
-  <%= link_to 'Add Memory', new_user_session_path, , class: "btn btn-outline-dark btn-sm" %>
+  <%= link_to 'Add Memory', new_user_session_path, class: "btn btn-outline-dark btn-sm" %>
 <% end %><br>
 
 <% if !@event&.memories.empty? %>
-  <h2>Memories</h2>
+  <h5>Memories</h5>
   <table>
     <thead>
       <th>Title</th><th>Writer</th>

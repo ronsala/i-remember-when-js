@@ -1,8 +1,8 @@
 <h1><%= link_to @memory.event.name, event_path(@memory.event) %>: <%= @memory.title %></h1>
-<h2>by <%= link_to @memory.user.username, user_path(@memory.user) %></h2>
+<center><h5>by <%= link_to @memory.user.username, user_path(@memory.user) %></h5></center>
 
 <p><%= @memory.body %>
 
-<% if @memory.user.id == current_user.id %>
+<% if @memory.user == current_user %>
   <p><%= link_to 'Edit', edit_memory_path(@memory), class: "btn btn-outline-dark btn-sm" %> <%= link_to 'Delete', memory_path(@memory), method: :delete, class: "btn btn-outline-dark btn-sm" %><p>
 <% end %>
