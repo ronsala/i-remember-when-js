@@ -54,7 +54,7 @@
               </li>
             <% else %>
               <li class="nav-item">
-                <a class="nav-link" href="/users/<%= current_user.id %>"><%= current_user.email %> [admin]</a>
+                <a class="nav-link btn btn-dark btn-sm" href="/users/<%= current_user.id %>"><%= current_user.email %> [admin]</a>
               </li>
             <% end %>
         <% end %>
