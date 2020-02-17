@@ -79,7 +79,6 @@ This app is available as open source under the terms of the [MIT License](https:
 ## Acknowledgments
 
 * Those who share their memories that we may all benefit from the lessons of history.
-<!-- * TODO photo credits -->
 * PurpleBooth for the [README-Template.md gist](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2).
 * [Flatiron School](https://flatironschool.com) for instruction and community.
 [FreePrivacyPolicy](https://www.freeprivacypolicy.com) for privacy policy help.
