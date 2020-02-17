@@ -13,7 +13,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     check_admin_key
-
   end
 
   # GET /resource/edit
