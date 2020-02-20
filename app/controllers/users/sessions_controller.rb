@@ -2,8 +2,8 @@
 
 # For authenticating and authorizing users.
 class Users::SessionsController < Devise::SessionsController
-  # before_action :configure_permitted_parameters, if: :devise_controller?
   skip_before_action :verify_signed_out_user
+
   # GET /users/sign_in
   def new
     super
