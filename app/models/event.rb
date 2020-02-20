@@ -9,7 +9,7 @@ class Event < ApplicationRecord
   validates :description, presence: true
   validates :country, presence: true
 
-  scope :by_date, -> { order(date: :asc).order(date: :asc) }
+  scope :by_date, -> { order(date: :asc) }
 
   # Converts date hash in event_params to Date object.
   def self.convert_date(event_params)
