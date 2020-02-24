@@ -5,3 +5,4 @@ class WelcomeController < ApplicationController
     @new_memories = Memory.most_recent(4)
   end
 end
+ 
