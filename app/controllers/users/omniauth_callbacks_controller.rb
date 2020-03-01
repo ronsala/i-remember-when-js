@@ -12,7 +12,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to @user
     else
       session['devise.google_data'] = request.env['omniauth.auth'].except(:extra)
-      redirect_to new_user_registration_path, alert: @user.errors.full_messages.join("\n")
+      redirect_to new_user_registration_path, alert: @user.errors.full_messages.join(" | ")
     end
   end
 
