@@ -39,6 +39,7 @@ gem 'google-api-client', '~> 0.13.6'
 gem 'jquery-rails'
 gem 'msgpack'
 gem 'nokogiri', '>= 1.10.4'
+gem 'rack-cors'
 gem 'rake'
 gem "rubyzip", ">= 1.3.0"
 
