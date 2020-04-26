@@ -8,8 +8,7 @@ class Api::V1::EventsController < ApplicationController
 
   def index
     @events = Event.all
-      render json: @events, status: 200
-    end
+    render json: @events, status: 200
   end
 
   def new
@@ -30,7 +29,6 @@ class Api::V1::EventsController < ApplicationController
 
   def show
     @creator = User.find(@event.user_id)
-
     render json: @creator, status: 200
   end
 
@@ -45,7 +43,7 @@ class Api::V1::EventsController < ApplicationController
   def destroy
     @event.destroy
     flash[:notice] = "#{@event.name} deleted!"
-    render json: {eventId: @event.id}
+    render json: { eventId: @event.id }
   end
 
   protected
