@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Index and show users
-class UsersController < ApplicationController
+class Api::V1::UsersController < ApplicationController
   def index
     @users = User.all.sort_by(&:username)
   end

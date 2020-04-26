@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # See https://guides.rubyonrails.org/action_controller_overview.html.
-class EventsController < ApplicationController
+class Api::V1::EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy authorized?]
   before_action :authenticate_user!, only: %i[new create]
   before_action :authorized?, only: %i[edit update destroy]

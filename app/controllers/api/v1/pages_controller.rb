@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Routes static pages.
-class PagesController < ApplicationController
+class Api::V1::PagesController < ApplicationController
   def about
     render 'about'
   end
