@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 
+gem 'active_model_serializers'
 gem 'bcrypt'
 gem 'bootstrap', '~> 4.3.1'
 gem 'devise', '>= 4.7.1'
