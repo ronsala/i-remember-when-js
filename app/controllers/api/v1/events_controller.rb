@@ -8,7 +8,7 @@ class Api::V1::EventsController < ApplicationController
 
   def index
     @events = Event.all
-    render json: @events, status: 200
+    render json: @events, status: :ok
   end
 
   def new
@@ -20,7 +20,7 @@ class Api::V1::EventsController < ApplicationController
     @event = Event.new(name: event_params[:name], country: event_params[:country], description: event_params[:description], user_id: current_user.id, date: date)
     if @event.save
       flash[:notice] = "#{@event.name} created!"
-      render json: @event, status: 200
+      render json: @event, status: :created
     else
       flash[:error] = @event.errors.full_messages.join(' | ')
       redirect_to new_event_path
@@ -29,7 +29,7 @@ class Api::V1::EventsController < ApplicationController
 
   def show
     @creator = User.find(@event.user_id)
-    render json: @creator, status: 200
+    render json: @creator, status: :ok
   end
 
   def edit; end
@@ -37,7 +37,7 @@ class Api::V1::EventsController < ApplicationController
   def update
     @event.update(event_params)
     flash[:notice] = "#{@event.name} updated!"
-    render json: @event, status: 200
+    render json: @event, status: :ok
   end
 
   def destroy
