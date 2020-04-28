@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class MemoriesController < ApplicationController
+class Api::V1::MemoriesController < ApplicationController
   before_action :set_event, only: %i[new create]
   before_action :set_memory, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[new create]

@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
 # See https://guides.rubyonrails.org/action_controller_overview.html.
-class EventsController < ApplicationController
+class Api::V1::EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy authorized?]
   before_action :authenticate_user!, only: %i[new create]
   before_action :authorized?, only: %i[edit update destroy]
 
   def index
     @events = Event.all
+    render json: @events, status: :ok
   end
 
   def new
@@ -19,7 +20,7 @@ class EventsController < ApplicationController
     @event = Event.new(name: event_params[:name], country: event_params[:country], description: event_params[:description], user_id: current_user.id, date: date)
     if @event.save
       flash[:notice] = "#{@event.name} created!"
-      redirect_to @event
+      render json: @event, status: :created
     else
       flash[:error] = @event.errors.full_messages.join(' | ')
       redirect_to new_event_path
@@ -28,6 +29,7 @@ class EventsController < ApplicationController
 
   def show
     @creator = User.find(@event.user_id)
+    render json: @creator, status: :ok
   end
 
   def edit; end
@@ -35,13 +37,13 @@ class EventsController < ApplicationController
   def update
     @event.update(event_params)
     flash[:notice] = "#{@event.name} updated!"
-    redirect_to event_path(@event)
+    render json: @event, status: :ok
   end
 
   def destroy
     @event.destroy
     flash[:notice] = "#{@event.name} deleted!"
-    redirect_to '/events'
+    render json: { eventId: @event.id }
   end
 
   protected
